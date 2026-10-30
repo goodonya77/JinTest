@@ -22,7 +22,13 @@
   마지막 환율을 저장해 두어 오프라인에서도 계산됩니다.
 - 다크 모드 자동 지원
 
-## 실행 방법
+## 폰에 바로 설치하기 (APK)
+GitHub에 코드를 올릴 때마다 APK가 자동으로 빌드됩니다.
+1. GitHub 저장소의 **Actions** 탭 → 최신 **Build APK** 실행 클릭
+2. 아래 **Artifacts**의 `ExchangeCalc-apk` 다운로드 → 압축을 풀면 `app-debug.apk`
+3. 폰으로 APK 파일을 옮겨서 열기 → "출처를 알 수 없는 앱 설치" 허용 → 설치
+
+## Android Studio로 실행하기
 1. [Android Studio](https://developer.android.com/studio) 설치
 2. `File > Open` 으로 이 폴더 열기 (Gradle 동기화가 자동으로 진행됩니다)
 3. 휴대폰을 USB로 연결(개발자 옵션 → USB 디버깅 켜기)하거나 에뮬레이터를 만든 뒤 ▶ Run
