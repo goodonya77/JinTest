@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
@@ -39,15 +40,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import kotlin.math.abs
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,19 +92,19 @@ fun ExchangeScreen(vm: MainViewModel = viewModel()) {
     ) { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             item {
                 BaseHeader(
                     state = state,
                     onAmountChange = vm::onAmountChange,
+                    onAmountFocused = vm::onAmountFocused,
                     onResetAuto = vm::resetToAutoBase,
                 )
             }
             items(Currency.entries.filter { it != state.base }, key = { it.code }) { c ->
-                val converted = state.rates?.convert(amount, state.base, c)
-                CurrencyRow(c, converted, onClick = { vm.selectBase(c) })
+                CurrencyRow(c, state.base, amount, state.rates, onClick = { vm.selectBase(c) })
             }
             item { Footer(state) }
         }
@@ -105,18 +112,25 @@ fun ExchangeScreen(vm: MainViewModel = viewModel()) {
 }
 
 @Composable
-private fun BaseHeader(state: UiState, onAmountChange: (String) -> Unit, onResetAuto: () -> Unit) {
+private fun BaseHeader(
+    state: UiState,
+    onAmountChange: (String) -> Unit,
+    onAmountFocused: () -> Unit,
+    onResetAuto: () -> Unit,
+) {
     val base = state.base
+    val focusManager = LocalFocusManager.current
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Column(Modifier.padding(16.dp)) {
+        Column(Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("${base.flag}  ${base.code} · ${base.koreanName}", fontWeight = FontWeight.Bold)
                 Spacer(Modifier.weight(1f))
                 Text(
-                    if (state.baseChosenManually) "직접 선택" else "거주국 자동 (${state.country.ifEmpty { "?" }})",
+                    if (state.baseChosenManually) "직접 선택"
+                    else "자동: ${state.country.code.ifEmpty { "?" }} (${state.country.source.label})",
                     style = MaterialTheme.typography.labelMedium,
                 )
             }
@@ -124,10 +138,15 @@ private fun BaseHeader(state: UiState, onAmountChange: (String) -> Unit, onReset
                 value = state.amountText,
                 onValueChange = onAmountChange,
                 singleLine = true,
+                placeholder = { Text("0") },
                 textStyle = MaterialTheme.typography.headlineSmall,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 suffix = { Text(base.code) },
-                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp)
+                    .onFocusChanged { if (it.isFocused) onAmountFocused() },
             )
             if (state.baseChosenManually) {
                 TextButton(onClick = onResetAuto) { Text("거주 국가 통화로 되돌리기") }
@@ -135,42 +154,105 @@ private fun BaseHeader(state: UiState, onAmountChange: (String) -> Unit, onReset
         }
     }
     Text(
-        "다른 통화를 누르면 그 통화가 기준이 돼요",
-        style = MaterialTheme.typography.bodySmall,
+        "다른 통화를 누르면 그 통화가 기준이 돼요 · ▲빨강: 기준통화 대비 강세, ▼파랑: 약세",
+        style = MaterialTheme.typography.labelSmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(top = 4.dp, start = 4.dp),
     )
 }
 
+/**
+ * 한 통화의 줄 (2줄 구성)
+ *  1줄: 국기 · 코드 · 이름 ........ 환산 금액
+ *  2줄: 1 USD = 1,380.50 ..... 전일 ▲5.20  작년말 ▼12.30
+ * 환율은 "이 통화 1단위가 기준통화로 얼마인지". 오르면 이 통화가 강해진 것(빨강), 내리면 약해진 것(파랑).
+ */
 @Composable
-private fun CurrencyRow(currency: Currency, value: Double?, onClick: () -> Unit) {
+private fun CurrencyRow(currency: Currency, base: Currency, amount: Double, rates: RateSet?, onClick: () -> Unit) {
+    val converted = rates?.latest?.convert(amount, base, currency)
+    val rate = rates?.latest?.convert(1.0, currency, base)
+    val unit = rate?.let { Formatter.quoteUnit(it) } ?: 1
+    val prev = rates?.prevDay?.convert(1.0, currency, base)
+    val yearEnd = rates?.yearEnd?.convert(1.0, currency, base)
+    val muted = MaterialTheme.colorScheme.onSurfaceVariant
+
     Card(Modifier.fillMaxWidth().clickable(onClick = onClick)) {
-        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(currency.flag, fontSize = 28.sp)
-            Spacer(Modifier.width(12.dp))
-            Column(Modifier.weight(1f)) {
+        Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(currency.flag, fontSize = 20.sp)
+                Spacer(Modifier.width(8.dp))
                 Text(currency.code, fontWeight = FontWeight.Bold)
-                Text(currency.koreanName, style = MaterialTheme.typography.bodySmall)
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    currency.koreanName,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = muted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f),
+                )
+                Text(
+                    converted?.let { Formatter.display(it, currency) } ?: "—",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                )
             }
-            Text(
-                value?.let { Formatter.display(it, currency) } ?: "—",
-                style = MaterialTheme.typography.titleLarge,
-            )
+            Row(Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    rate?.let { "$unit ${currency.code} = ${Formatter.rate(it * unit)}" } ?: "",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = muted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f),
+                )
+                ChangeText("전일", rate, prev, unit)
+                Spacer(Modifier.width(10.dp))
+                ChangeText("작년말", rate, yearEnd, unit)
+            }
         }
     }
 }
 
 @Composable
+private fun ChangeText(label: String, now: Double?, before: Double?, unit: Int) {
+    val dark = isSystemInDarkTheme()
+    val red = if (dark) Color(0xFFEF5350) else Color(0xFFD32F2F)
+    val blue = if (dark) Color(0xFF64B5F6) else Color(0xFF1565C0)
+    val muted = MaterialTheme.colorScheme.onSurfaceVariant
+
+    val diff = if (now != null && before != null) (now - before) * unit else null
+    val (value, color) = when {
+        diff == null -> "—" to muted
+        abs(diff) < 0.005 -> "0.00" to muted
+        diff > 0 -> "▲${Formatter.rate(diff)}" to red
+        else -> "▼${Formatter.rate(-diff)}" to blue
+    }
+    Text(
+        buildAnnotatedString {
+            withStyle(SpanStyle(color = muted)) { append("$label ") }
+            withStyle(SpanStyle(color = color, fontWeight = FontWeight.SemiBold)) { append(value) }
+        },
+        style = MaterialTheme.typography.labelMedium,
+        maxLines = 1,
+    )
+}
+
+@Composable
 private fun Footer(state: UiState) {
-    Column(Modifier.padding(top = 8.dp)) {
+    Column(Modifier.padding(top = 8.dp, start = 4.dp)) {
         state.error?.let {
             Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
         }
-        val updated = state.rates?.updatedAt?.takeIf { it > 0 }?.let {
-            SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.KOREA).format(Date(it * 1000))
-        }
+        val r = state.rates
         Text(
-            if (updated != null) "환율 기준 시각: $updated (출처: open.er-api.com)" else "환율 데이터 없음 — 인터넷 연결 후 새로고침해 주세요",
+            if (r != null) {
+                "기준일 ${r.latest.date} · 전일 ${r.prevDay?.date ?: "없음"} · 작년말 ${r.yearEnd?.date ?: "없음"}\n출처: fawazahmed0/currency-api"
+            } else {
+                "환율 데이터 없음 — 인터넷 연결 후 새로고침해 주세요"
+            },
             style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }

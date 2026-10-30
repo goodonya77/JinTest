@@ -26,3 +26,13 @@ jobs:
         with:
           name: ExchangeCalc-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      # 앱이 쓰는 외부 API가 살아있는지 확인 (실패해도 APK 빌드는 성공 처리)
+      - name: Check data APIs
+        continue-on-error: true
+        run: |
+          for tag in latest 2025-12-31; do
+            curl -fsS "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@$tag/v1/currencies/usd.min.json" \
+              | jq -c '{date, usd: (.usd | {krw, jpy, vnd, eur, idr, inr, cny})}'
+          done
+          curl -fsS https://api.country.is/ | jq -c '{country}'

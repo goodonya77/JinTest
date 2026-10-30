@@ -11,11 +11,11 @@ import kotlinx.coroutines.launch
 
 data class UiState(
     val base: Currency = Currency.USD,
-    val country: String = "",
-    /** 사용자가 직접 기준 통화를 고른 경우 true (자동 설정 대신 그 선택을 유지). */
+    val country: DetectedCountry = DetectedCountry("", CountrySource.NONE),
+    /** 사용자가 이번 실행 중 기준 통화를 직접 고른 경우 true. 앱을 다시 켜면 거주국 기준으로 돌아간다. */
     val baseChosenManually: Boolean = false,
     val amountText: String = "1",
-    val rates: Rates? = null,
+    val rates: RateSet? = null,
     val loading: Boolean = false,
     val error: String? = null,
 )
@@ -29,15 +29,39 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val state: StateFlow<UiState> = _state
 
     init {
-        val country = CountryDetector.detectCountry(app)
-        val manual = Currency.fromCode(prefs.getString(KEY_MANUAL_BASE, null))
+        val network = CountryDetector.fromNetwork(app)
+        val initial = network
+            ?: prefs.getString(KEY_LAST_COUNTRY, null)?.let { DetectedCountry(it, CountrySource.SAVED) }
+            ?: CountryDetector.fromSimOrLocale(app)
         _state.value = UiState(
-            base = manual ?: CountryDetector.currencyForCountry(country),
-            country = country,
-            baseChosenManually = manual != null,
+            base = CountryDetector.currencyForCountry(initial.code),
+            country = initial,
             rates = repo.loadCached(),
         )
+        if (network != null) {
+            remember(network)
+        } else {
+            // 통신망 정보가 없으면 인터넷 위치로 확인 (해외 로밍 + Wi-Fi 사용 시)
+            viewModelScope.launch {
+                val ip = CountryDetector.fromIp()
+                if (ip != null) {
+                    remember(ip)
+                    applyCountry(ip)
+                }
+            }
+        }
         refresh()
+    }
+
+    private fun remember(country: DetectedCountry) {
+        prefs.edit().putString(KEY_LAST_COUNTRY, country.code).apply()
+    }
+
+    private fun applyCountry(country: DetectedCountry) {
+        _state.update {
+            if (it.baseChosenManually) it.copy(country = country)
+            else it.copy(country = country, base = CountryDetector.currencyForCountry(country.code))
+        }
     }
 
     fun refresh() {
@@ -60,13 +84,17 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    /** 입력창을 누르면 바로 새 금액을 칠 수 있게 비운다. */
+    fun onAmountFocused() {
+        _state.update { it.copy(amountText = "") }
+    }
+
     /** 목록에서 다른 통화를 누르면 그 통화를 기준으로 바꾸고, 금액도 환산해서 이어간다. */
     fun selectBase(currency: Currency) {
         val s = _state.value
         if (currency == s.base) return
         val converted = s.amountText.toDoubleOrNull()
-            ?.let { s.rates?.convert(it, s.base, currency) }
-        prefs.edit().putString(KEY_MANUAL_BASE, currency.code).apply()
+            ?.let { s.rates?.latest?.convert(it, s.base, currency) }
         _state.update {
             it.copy(
                 base = currency,
@@ -76,15 +104,14 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    /** 수동 선택을 지우고 거주 국가 기준으로 되돌린다. */
+    /** 직접 고른 통화를 취소하고 거주 국가 기준으로 되돌린다. */
     fun resetToAutoBase() {
-        prefs.edit().remove(KEY_MANUAL_BASE).apply()
         _state.update {
-            it.copy(base = CountryDetector.currencyForCountry(it.country), baseChosenManually = false)
+            it.copy(base = CountryDetector.currencyForCountry(it.country.code), baseChosenManually = false)
         }
     }
 
     private companion object {
-        const val KEY_MANUAL_BASE = "manual_base"
+        const val KEY_LAST_COUNTRY = "last_country"
     }
 }

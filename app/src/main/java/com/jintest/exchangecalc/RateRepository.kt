@@ -4,14 +4,19 @@ import android.content.Context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import java.io.FileNotFoundException
 import java.net.HttpURLConnection
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 
 /**
- * USD 1달러 기준 환율표. 다른 통화끼리는 USD를 거쳐 교차 계산한다.
- * updatedAt은 데이터 제공처가 환율을 갱신한 시각(epoch 초).
+ * 특정 날짜의 USD 1달러 기준 환율표. 다른 통화끼리는 USD를 거쳐 교차 계산한다.
+ * date는 "yyyy-MM-dd".
  */
-data class Rates(val perUsd: Map<Currency, Double>, val updatedAt: Long) {
+data class Rates(val perUsd: Map<Currency, Double>, val date: String) {
     fun convert(amount: Double, from: Currency, to: Currency): Double? {
         val fromRate = perUsd[from] ?: return null
         val toRate = perUsd[to] ?: return null
@@ -19,25 +24,79 @@ data class Rates(val perUsd: Map<Currency, Double>, val updatedAt: Long) {
     }
 }
 
-/** 무료 환율 API(open.er-api.com, API 키 불필요)에서 환율을 받고, 마지막 결과를 저장해 둔다. */
+/** 최신 환율과 비교용 환율(전일, 작년 말). 비교용은 못 받아오면 null. */
+data class RateSet(val latest: Rates, val prevDay: Rates?, val yearEnd: Rates?)
+
+/**
+ * 무료 환율 API(fawazahmed0/currency-api, API 키 불필요)에서 환율을 받는다.
+ * 날짜별 과거 환율도 제공해서 전일·작년 말 대비 증감을 계산할 수 있다.
+ * 받은 결과는 저장해 두어 오프라인에서도 쓴다.
+ */
 class RateRepository(context: Context) {
 
     private val prefs = context.getSharedPreferences("rates", Context.MODE_PRIVATE)
 
-    fun loadCached(): Rates? = prefs.getString(KEY_JSON, null)?.let { parse(it) }
+    fun loadCached(): RateSet? {
+        val latest = prefs.getString(KEY_LATEST, null)?.let { parse(it) } ?: return null
+        return RateSet(
+            latest = latest,
+            prevDay = prefs.getString(KEY_PREV, null)?.let { parse(it) },
+            yearEnd = prefs.getString(KEY_YEAR_END, null)?.let { parse(it) },
+        )
+    }
 
-    suspend fun fetch(): Rates = withContext(Dispatchers.IO) {
-        val conn = URL(API_URL).openConnection() as HttpURLConnection
+    suspend fun fetch(): RateSet = withContext(Dispatchers.IO) {
+        val latestJson = download("latest") ?: error("서버 응답 없음")
+        val latest = parse(latestJson) ?: error("응답 형식 오류")
+        prefs.edit().putString(KEY_LATEST, latestJson).apply()
+
+        val day = dateFormat().parse(latest.date) ?: error("날짜 형식 오류")
+        val prevDay = findDated(KEY_PREV, (1..4).map { shiftDays(day, -it) })
+        val year = Calendar.getInstance(UTC).apply { time = day }.get(Calendar.YEAR) - 1
+        val yearEnd = findDated(KEY_YEAR_END, (31 downTo 28).map { "$year-12-$it" })
+        RateSet(latest, prevDay, yearEnd)
+    }
+
+    /** 후보 날짜를 순서대로 시도해서 처음 받아지는 환율을 쓴다. 이미 저장된 날짜면 다시 받지 않는다. */
+    private fun findDated(key: String, dates: List<String>): Rates? {
+        prefs.getString(key, null)?.let { parse(it) }?.takeIf { it.date in dates }?.let { return it }
+        for (date in dates) {
+            val json = runCatching { download(date) }.getOrNull() ?: continue
+            val rates = parse(json) ?: continue
+            prefs.edit().putString(key, json).apply()
+            return rates
+        }
+        return null
+    }
+
+    /** tag는 "latest" 또는 "yyyy-MM-dd". 기본 CDN이 안 되면 예비 주소로. 해당 날짜가 없으면 null. */
+    private fun download(tag: String): String? {
+        val urls = listOf(
+            "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@$tag/v1/currencies/usd.min.json",
+            "https://$tag.currency-api.pages.dev/v1/currencies/usd.min.json",
+        )
+        var lastError: Exception? = null
+        for (url in urls) {
+            try {
+                return get(url)
+            } catch (e: Exception) {
+                lastError = e
+            }
+        }
+        if (lastError is FileNotFoundException) return null
+        throw lastError ?: IllegalStateException("다운로드 실패")
+    }
+
+    private fun get(url: String): String {
+        val conn = URL(url).openConnection() as HttpURLConnection
         try {
             conn.connectTimeout = 10_000
             conn.readTimeout = 10_000
-            if (conn.responseCode != HttpURLConnection.HTTP_OK) {
-                error("HTTP ${conn.responseCode}")
+            when (val code = conn.responseCode) {
+                HttpURLConnection.HTTP_OK -> return conn.inputStream.bufferedReader().use { it.readText() }
+                HttpURLConnection.HTTP_NOT_FOUND -> throw FileNotFoundException(url)
+                else -> error("HTTP $code")
             }
-            val body = conn.inputStream.bufferedReader().use { it.readText() }
-            val rates = parse(body) ?: error("응답 형식 오류")
-            prefs.edit().putString(KEY_JSON, body).apply()
-            rates
         } finally {
             conn.disconnect()
         }
@@ -45,16 +104,24 @@ class RateRepository(context: Context) {
 
     private fun parse(json: String): Rates? = runCatching {
         val root = JSONObject(json)
-        if (root.optString("result") != "success") return null
-        val table = root.getJSONObject("rates")
+        val table = root.getJSONObject("usd")
         val perUsd = Currency.entries
-            .filter { table.has(it.code) }
-            .associateWith { table.getDouble(it.code) }
-        Rates(perUsd, root.optLong("time_last_update_unix"))
+            .filter { table.has(it.code.lowercase(Locale.ROOT)) }
+            .associateWith { table.getDouble(it.code.lowercase(Locale.ROOT)) }
+        Rates(perUsd, root.getString("date"))
     }.getOrNull()
 
+    private fun dateFormat() = SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).apply { timeZone = UTC }
+
+    private fun shiftDays(date: java.util.Date, days: Int): String {
+        val cal = Calendar.getInstance(UTC).apply { time = date; add(Calendar.DAY_OF_MONTH, days) }
+        return dateFormat().format(cal.time)
+    }
+
     private companion object {
-        const val API_URL = "https://open.er-api.com/v6/latest/USD"
-        const val KEY_JSON = "latest_json"
+        val UTC: TimeZone = TimeZone.getTimeZone("UTC")
+        const val KEY_LATEST = "latest_json"
+        const val KEY_PREV = "prev_day_json"
+        const val KEY_YEAR_END = "year_end_json"
     }
 }
