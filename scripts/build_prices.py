@@ -24,8 +24,33 @@ def clean(entry):
 
 
 countries, summary = {}, []
-for f in sorted(src.glob("*.json")):
-    d = json.loads(f.read_text(encoding="utf-8"))
+# 2차 조사 패치: 기존에 비어 있던 값만 채운다
+patches = [json.loads(f.read_text(encoding="utf-8")) for f in sorted(src.glob("patch_*.json"))]
+# 조사 기준(2024년 이후)에 맞지 않는 것으로 확인된 값은 비운다
+DROP = {("FR", "mobile_data_1gb_usd"): "Cable.co.uk 2023년 조사값으로 보여 기준(2024년 이후) 미달",
+        ("IT", "mobile_data_1gb_usd"): "Cable.co.uk 2023년 조사값으로 보여 기준(2024년 이후) 미달"}
+
+
+def apply_patches(d):
+    iso2 = d["iso2"]
+    for p in patches:
+        part = p.get(iso2, {})
+        for k, v in part.get("national", {}).items():
+            if (d.setdefault("national", {}).get(k) or {}).get("value") is None:
+                d["national"][k] = v
+        for city, items in part.get("cities", {}).items():
+            target = d.setdefault("cities", {}).setdefault(city, {})
+            for k, v in items.items():
+                if (target.get(k) or {}).get("value") is None:
+                    target[k] = v
+    for (c, k), why in DROP.items():
+        if c == iso2:
+            d["national"][k] = {"value": None, "note": why}
+    return d
+
+
+for f in sorted(p for p in src.glob("*.json") if not p.name.startswith("patch_")):
+    d = apply_patches(json.loads(f.read_text(encoding="utf-8")))
     nat = {k: clean(d.get("national", {}).get(k)) for k in KEYS_NATIONAL}
     cities = {c: {k: clean(v.get(k)) for k in KEYS_CITY} for c, v in d.get("cities", {}).items()}
     countries[d["iso2"]] = {"currency": d["currency"], "national": nat, "cities": cities}

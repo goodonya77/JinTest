@@ -208,11 +208,8 @@
      "verified": false
     },
     "mobile_data_1gb_usd": {
-     "value": 0.2,
-     "as_of": "2026-06",
-     "source": "https://cellesim.com/en/mobile-data-prices-worldwide-2026",
-     "note": "secondhand: Cellesim figure attributed to Cable.co.uk 2026 study; not verified on cable.co.uk (blocked)",
-     "verified": false
+     "value": null,
+     "note": "Cable.co.uk 2023년 조사값으로 보여 기준(2024년 이후) 미달"
     },
     "broadband_month_usd": {
      "value": null,
@@ -353,8 +350,11 @@
      "verified": false
     },
     "netflix_standard": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 120000,
+     "as_of": "2026-02",
+     "source": "https://www.metrotvnews.com/read/NrWC8Rnr-mulai-rp54-ribu-ini-daftar-paket-netflix-dan-cara-praktis-berlangganan-via-hp",
+     "note": "Standard Rp120.000/mo per Metro TV list (21 Feb 2026); press, not netflix.com (blocked). No ID increase found after US Mar-2026 hike",
+     "verified": false
     },
     "spotify_premium": {
      "value": null,
@@ -365,16 +365,25 @@
      "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
     },
     "broadband_month_usd": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 28.05,
+     "as_of": "2024-05",
+     "source": "https://data.goodstats.id/statistic/harga-internet-per-bulan-di-timor-leste-termahal-se-asean-hrPH2",
+     "note": "Cable.co.uk 2024 broadband (data Sep-Nov 2023), ID 66th; seen in ISPreview table snippet and Goodstats citing Cable.co.uk",
+     "verified": false
     },
     "petrol_1l": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 12900,
+     "as_of": "2026-06",
+     "source": "https://www.globalpetrolprices.com/Indonesia/",
+     "note": "GPP country page gasoline, dated 08.06.2026 (search snippet). Gasoline page showed 12,050 (09-Feb-2026). Pertamina non-subsidised RON92 hike ~10 Jun 2026 may not be reflected",
+     "verified": false
     },
     "electricity_kwh": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 1444.7,
+     "as_of": "2025-09",
+     "source": "https://www.globalpetrolprices.com/Indonesia/electricity_prices/",
+     "note": "GPP household, latest update Sep 2025 (search snippet)",
+     "verified": false
     },
     "ikea_billy": {
      "value": null,
@@ -488,11 +497,8 @@
      "verified": false
     },
     "mobile_data_1gb_usd": {
-     "value": 0.09,
-     "as_of": "2026-06",
-     "source": "https://www.cable.co.uk/mobiles/worldwide-data-pricing/",
-     "note": "Cable.co.uk text seen via search snippet; edition assumed 2026 (not fetched directly)",
-     "verified": false
+     "value": null,
+     "note": "Cable.co.uk 2023년 조사값으로 보여 기준(2024년 이후) 미달"
     },
     "broadband_month_usd": {
      "value": null,
@@ -734,12 +740,18 @@
       "note": "웹 검색 예산 소진으로 조사 못함"
      },
      "taxi_base": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 500,
+      "as_of": "2026-01",
+      "source": "https://www.cao.go.jp/consumer/kabusoshiki/kokyoryokin/doc/090_260114_shiryou2.pdf",
+      "note": "Tokyo 23 wards/Musashino/Mitaka ordinary taxi upper-limit flag fare 500 yen for 1.096km (lower limit 470); per MLIT material in 2026-01 Consumer Affairs doc. From search result text; PDF not fetched",
+      "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 180,
+      "as_of": "2026-03",
+      "source": "https://www.tokyometro.jp/support/guide/operation/pdf/information_20260314.pdf",
+      "note": "Tokyo Metro adult ticket 1-6km 180 yen (IC 178), incl. barrier-free surcharge; Toei also 180. From search result text; page not fetched",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -763,12 +775,18 @@
       "note": "웹 검색 예산 소진으로 조사 못함"
      },
      "taxi_base": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 600,
+      "as_of": "2025-11",
+      "source": "https://wwwtb.mlit.go.jp/kinki/content/000379518.pdf",
+      "note": "Osaka district (whole prefecture) ordinary taxi upper-limit flag fare 600 yen for 1.2km, new fares effective 2025-11-05 (Kinki Transport Bureau notice 2025-10-06). Exact PDF among several Kinki MLIT results uncertain; from search result text only",
+      "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 190,
+      "as_of": "2026-11",
+      "source": "https://subway.osakametro.co.jp/guide/fare/fare/price.php",
+      "note": "Osaka Metro 1-ku (<=3km) adult fare 190 yen incl. 10 yen barrier-free surcharge (since 2023-03); official fare page seen in search results, not fetched",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -789,12 +807,18 @@
       "note": "웹 검색 예산 소진으로 조사 못함"
      },
      "taxi_base": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 600,
+      "as_of": "2026-07",
+      "source": "https://wwwtb.mlit.go.jp/kyushu/content/000374925.pdf",
+      "note": "Fukuoka-shi block revised upper-limit fare 600 yen for 1.1km (was 830 yen/1.6km), implementation date 2026-07-01 per Kyushu Transport Bureau doc. Snippet did not explicitly name Fukuoka-shi block (matched by old fare); actual implementation not confirmed. Search text only",
+      "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 210,
+      "as_of": "2026",
+      "source": "https://citiesinsider.com/country/japan/fukuoka/trains/ja",
+      "note": "Fukuoka City Subway adult minimum fare 210 yen; third-party 2026 guide (also fun-japan.jp); official fare table not confirmed",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -815,12 +839,18 @@
       "note": "웹 검색 예산 소진으로 조사 못함"
      },
      "taxi_base": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 600,
+      "as_of": "2025-12",
+      "source": "https://wwwtb.mlit.go.jp/hokkaido/content/000362131.pdf",
+      "note": "Sapporo/Otaru unified upper-limit fare 600 yen for 1.05km from 2025-12-17 (Hokkaido Transport Bureau). Search text only",
+      "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "웹 검색 예산 소진으로 조사 못함"
+      "value": 210,
+      "as_of": "2026-05",
+      "source": "https://pricey.jp/web/articles/4612",
+      "note": "Sapporo subway adult 1-ku 210 yen (fare since 2019-10, same for ticket/SAPICA); pricey.jp says no increase as of 2026-05; official page https://www.city.sapporo.jp/st/josyaken/ryokin/ryoukin.html",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -869,8 +899,11 @@
      "verified": false
     },
     "spotify_premium": {
-     "value": null,
-     "note": "블로그에서 월 11,990원 확인되나 Spotify 공식 페이지 확인 못함"
+     "value": 11990,
+     "as_of": "2026-06",
+     "source": "https://pickle.plus/blog/spotify-premium-free-trial-cheapest-after",
+     "note": "Premium Individual KRW 11,990/mo (VAT incl.) per 2026 Korean blogs; official spotify.com page not seen. One older blog says 10,900",
+     "verified": false
     },
     "mobile_data_1gb_usd": {
      "value": null,
@@ -987,8 +1020,11 @@
       "note": "요금계산 사이트에 4,500원 표기만 있음, 공식 출처 미확인"
      },
      "transit_single": {
-      "value": null,
-      "note": "jeju.com 블로그에 간선·지선 교통카드 1,150원 표기, 공식·날짜 미확인"
+      "value": 1150,
+      "as_of": "2026-04",
+      "source": "https://m.seoul.co.kr/news/2026/04/30/20260430500235",
+      "note": "제주 시내버스 일반 교통카드 1,150원(현금 1,200원), 2026.4 서울신문 기사 언급. 공식 요금표 미확인, 요금조정 공론화 진행 중",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -1024,32 +1060,50 @@
      "verified": false
     },
     "netflix_standard": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 449,
+     "as_of": "2025-06",
+     "source": "https://dzrh.com.ph/post/netflix-subscription-rates-to-increase-by-june-2025-due-to-digital-services-law",
+     "note": "Standard PHP 449/mo incl. 12% VAT from 1 Jun 2025 (press, not netflix.com which is blocked); no 2026 change found",
+     "verified": false
     },
     "spotify_premium": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 169,
+     "as_of": "2026-02",
+     "source": "https://www.spotify.com/ph-en/premium/",
+     "note": "Premium Individual PHP 169/mo (raised from 149 Aug 2025); official page seen via search snippet (offer ending 17 Feb 2026 on same snapshot)",
+     "verified": false
     },
     "mobile_data_1gb_usd": {
      "value": null,
      "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
     },
     "broadband_month_usd": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 35.55,
+     "as_of": "2024-05",
+     "source": "https://www.bworldonline.com/?p=596825",
+     "note": "Cable.co.uk 2024 broadband (data Sep-Nov 2023), PH 89th of 223; via BusinessWorld report (search snippet)",
+     "verified": false
     },
     "petrol_1l": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 78.8,
+     "as_of": "2026-08",
+     "source": "https://www.globalpetrolprices.com/Philippines/",
+     "note": "GPP country page gasoline, dated 10.08.2026 (read as 10 Aug 2026; format ambiguous). Search snippet; GPP blocked",
+     "verified": false
     },
     "electricity_kwh": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 13.318,
+     "as_of": "2025-12",
+     "source": "https://www.globalpetrolprices.com/Philippines/",
+     "note": "GPP household, dated 01.12.2025 (country table). Electricity page shows 12.380 (undated)",
+     "verified": false
     },
     "ikea_billy": {
-     "value": null,
-     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+     "value": 3499,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com/ph/en/p/billy-bookcase-white-00522047",
+     "note": "BILLY white 80x28x202, 'Made more affordable' PHP 3,499 (previous 3,990). Seen in search snippet 2026-11; capture date unknown",
+     "verified": false
     }
    },
    "cities": {
@@ -1195,20 +1249,32 @@
      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
     },
     "broadband_month_usd": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     "value": 22.56,
+     "as_of": "2024-05",
+     "source": "https://www.ispreview.co.uk/index.php/2024/05/study-uk-falls-to-rank-96th-cheapest-in-the-world-for-broadband.html",
+     "note": "Cable.co.uk 2024 broadband (data Sep-Nov 2023), TH 54th; seen in ISPreview table snippet, also Goodstats citing Cable.co.uk",
+     "verified": false
     },
     "petrol_1l": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     "value": 44.99,
+     "as_of": "2026-07",
+     "source": "https://www.globalpetrolprices.com/Thailand/",
+     "note": "GPP country page gasoline, dated 13.07.2026 (search snippet; GPP blocked). Gasoline page showed 41.77 (09-Mar-2026)",
+     "verified": false
     },
     "electricity_kwh": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     "value": 4.036,
+     "as_of": "2025-12",
+     "source": "https://www.globalpetrolprices.com/Thailand/",
+     "note": "GPP household, dated 01.12.2025 (country table). Electricity page shows undated 4.260",
+     "verified": false
     },
     "ikea_billy": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen (IKEA Thailand exists; not checked)"
+     "value": 1990,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com/th/en/p/billy-bookcase-white-00522047",
+     "note": "BILLY white 80x28x202 (00522047), sale price 1,990 THB, previous price 2,490 THB. Seen in search snippet 2026-11; page capture date unknown",
+     "verified": false
     }
    },
    "cities": {
@@ -1222,12 +1288,18 @@
       "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
      },
      "taxi_base": {
-      "value": null,
-      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+      "value": 35,
+      "as_of": "2026-06",
+      "source": "https://www.bangkokbiznews.com/news/news_update/1024285",
+      "note": "Small 4-seat metered taxi starting fare 35 THB (40 for 7-seat) per MoT notice effective 2023-01-13; June 2026 reports say DLT plans first increase, not yet in force per search. Value text from Thairath/ThaiPost snippets; uncertain if changed after mid-2026",
+      "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+      "value": 17,
+      "as_of": "2025-11",
+      "source": "https://www.kaohoon.com/news/general/792746",
+      "note": "BTS Green Line minimum fare 17 THB (extensions distance-based 17-45 from 2025-11-01; core section also starts 17). Search text only",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -1302,8 +1374,11 @@
    "currency": "TWD",
    "national": {
     "starbucks_americano_tall": {
-     "value": null,
-     "note": "Starbucks TW raised espresso drinks by NT$5 on 2025-02-12 (bnext.com.tw), but no source showing the Tall Americano price was found"
+     "value": 100,
+     "as_of": "2026-08",
+     "source": "https://www.money101.com.tw/blog/%E6%98%9F%E5%B7%B4%E5%85%8B-%E6%BC%B2%E5%83%B9-%E5%84%AA%E6%83%A0%E6%B4%BB%E5%8B%95",
+     "note": "Money101 finance-blog price table updated 2026-08: 美式咖啡 小/中/大/特大 NT$85/100/115/130; 中杯 = Tall. Not official; page not fetchable, seen in search result text only. Consistent with NT$5 espresso-drink hike on 2025-02-12.",
+     "verified": false
     },
     "coke_500ml": {
      "value": null,
@@ -1339,8 +1414,11 @@
      "note": "cable.co.uk unreachable (host blocked); search snippets did not show a 2024+ figure for this country"
     },
     "broadband_month_usd": {
-     "value": null,
-     "note": "cable.co.uk unreachable (host blocked); search snippets did not show a 2024+ figure for this country"
+     "value": 24.63,
+     "as_of": "2024-05",
+     "source": "https://www.ispreview.co.uk/index.php/2024/05/study-uk-falls-to-rank-96th-cheapest-in-the-world-for-broadband.html",
+     "note": "Cable.co.uk 2024 broadband (data Sep-Nov 2023), TW 56th; seen via ISPreview table snippet",
+     "verified": false
     },
     "petrol_1l": {
      "value": 31.3,
@@ -1417,8 +1495,11 @@
       "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "KRTC MRT starting fare commonly cited as NT$20 but no 2024+ dated source confirmed before search budget ran out"
+      "value": 20,
+      "as_of": "2024-10",
+      "source": "https://news.ltn.com.tw/news/life/breakingnews/4860997",
+      "note": "Kaohsiung MRT single journey from NT$20 (max 60), LTN report on ending 15% e-ticket discount from Nov; article year not shown in snippet (ID suggests 2024-10), also mirrormedia 2024-02. Search text only",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -1761,16 +1842,25 @@
      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
     },
     "broadband_month_usd": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     "value": 8.72,
+     "as_of": "2024-05",
+     "source": "https://www.ispreview.co.uk/index.php/2024/05/study-uk-falls-to-rank-96th-cheapest-in-the-world-for-broadband.html",
+     "note": "Cable.co.uk 2024 broadband pricing (packages collected 7 Sep-10 Nov 2023, published May 2024); VN 7th cheapest. Seen via search snippets of ISPreview table / Cable press release; cable.co.uk/bestbroadbanddeals.co.uk blocked",
+     "verified": false
     },
     "petrol_1l": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     "value": 20805,
+     "as_of": "2026-07",
+     "source": "https://www.globalpetrolprices.com/Vietnam/gasoline_prices/",
+     "note": "GPP gasoline page 'updated 13-Jul-2026' (search snippet; GPP blocked). GPP country page shows 27,955 dated 05.10.2026 (if dd.mm = 5 Oct 2026, newer); conflicting, used unambiguously dated value",
+     "verified": false
     },
     "electricity_kwh": {
-     "value": null,
-     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     "value": 2050,
+     "as_of": "2026-03",
+     "source": "https://www.globalpetrolprices.com/Vietnam/electricity_prices/",
+     "note": "GPP household, dated 01.03.2026 (search snippet). New 5-tier household tariff from 1 Nov 2026 not reflected",
+     "verified": false
     },
     "ikea_billy": {
      "value": null,
@@ -1792,8 +1882,11 @@
       "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
      },
      "transit_single": {
-      "value": null,
-      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+      "value": 7000,
+      "as_of": "2025-01",
+      "source": "https://vneconomy.vn/tp-hcm-chinh-thuc-chot-gia-ve-tau-metro-1.htm",
+      "note": "Metro Line 1 (Ben Thanh-Suoi Tien) minimum single cash fare 7,000 VND (cashless 6,000), from 2025-01-21. City buses (5,000-7,000 VND subsidized) reportedly free in parts of 2026, so metro used. Search text only",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -1821,8 +1914,11 @@
       "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
      },
      "transit_single": {
-      "value": null,
-      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+      "value": 8000,
+      "as_of": "2024-11",
+      "source": "https://thoibaotaichinhvietnam.vn/gia-ve-xe-buyt-ha-noi-tang-tu-14-den-55-161455.html",
+      "note": "Subsidized bus single ticket <15km 8,000 VND from 2024-11-01 (Hanoi People's Committee decision). Search text only",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
