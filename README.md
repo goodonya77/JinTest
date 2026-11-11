@@ -20,10 +20,11 @@
 - 다크 모드 자동 지원
 
 ## 폰에 바로 설치하기 (APK)
-GitHub에 코드를 올릴 때마다 APK가 자동으로 빌드됩니다.
-1. GitHub 저장소의 **Actions** 탭 → 최신 **Build APK** 실행 클릭
-2. 아래 **Artifacts**의 `ExchangeCalc-apk` 다운로드 → 압축을 풀면 `app-debug.apk`
-3. 폰으로 APK 파일을 옮겨서 열기 → "출처를 알 수 없는 앱 설치" 허용 → 설치
+GitHub에 코드를 올릴 때마다 APK가 자동으로 빌드되어 아래 주소에 올라갑니다.
+
+**휴대폰 브라우저로 열기:** https://github.com/goodonya77/JinTest/releases/latest/download/ExchangeCalc.apk
+
+받은 파일을 열고 → "출처를 알 수 없는 앱 설치" 허용 → 설치
 
 ## Android Studio로 실행하기
 1. [Android Studio](https://developer.android.com/studio) 설치

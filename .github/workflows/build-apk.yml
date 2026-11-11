@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -26,6 +28,20 @@ jobs:
         with:
           name: ExchangeCalc-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      # 휴대폰에서 바로 받을 수 있게 릴리스에 APK를 올린다 (항상 같은 주소)
+      # https://github.com/<저장소>/releases/latest/download/ExchangeCalc.apk
+      - name: Publish APK to release
+        run: cp app/build/outputs/apk/debug/app-debug.apk ExchangeCalc.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-apk
+          name: 환율계산기 최신 APK
+          body: |
+            휴대폰에서 아래 ExchangeCalc.apk 를 눌러 받은 뒤 설치하세요.
+            빌드 커밋: ${{ github.sha }}
+          files: ExchangeCalc.apk
+          make_latest: true
 
       # 앱이 쓰는 외부 API가 살아있는지 확인 (실패해도 APK 빌드는 성공 처리)
       - name: Check data APIs
