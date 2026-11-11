@@ -40,12 +40,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -75,6 +78,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.jintest.exchangecalc.travel.Home
+import com.jintest.exchangecalc.travel.TravelScreen
+import com.jintest.exchangecalc.travel.TravelViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,8 +103,9 @@ class MainActivity : ComponentActivity() {
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExchangeScreen(vm: MainViewModel = viewModel()) {
+fun ExchangeScreen(vm: MainViewModel = viewModel(), travelVm: TravelViewModel = viewModel()) {
     val state by vm.state.collectAsStateWithLifecycle()
+    var tab by rememberSaveable { mutableIntStateOf(0) }
     val config = LocalConfiguration.current
     val w = config.screenWidthDp
     val h = config.screenHeightDp
@@ -116,12 +123,28 @@ fun ExchangeScreen(vm: MainViewModel = viewModel()) {
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("환율계산기") },
-                actions = { RefreshButton(state.loading, vm::refresh) },
-            )
+            Column {
+                TopAppBar(
+                    title = { Text("환율계산기") },
+                    actions = { RefreshButton(state.loading, vm::refresh) },
+                )
+                TabRow(selectedTabIndex = tab) {
+                    Tab(selected = tab == 0, onClick = { tab = 0 }, text = { Text("💱 환율") })
+                    Tab(selected = tab == 1, onClick = { tab = 1 }, text = { Text("✈️ 여행 물가") })
+                }
+            }
         },
     ) { padding ->
+        if (tab == 1) {
+            TravelScreen(
+                vm = travelVm,
+                // 거주 국가를 못 찾았으면 거주국 통화의 나라로 대신
+                home = Home(state.country.code.ifEmpty { state.home.country }, state.home.code),
+                rates = state.rates?.latest,
+                modifier = Modifier.padding(padding),
+            )
+            return@Scaffold
+        }
         CardGrid(
             state, vm, reorder,
             columns = GridCells.Fixed(columns),

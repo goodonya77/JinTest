@@ -17,9 +17,12 @@ import java.util.TimeZone
  * date는 "yyyy-MM-dd".
  */
 data class Rates(val perUsd: Map<String, Double>, val date: String) {
-    fun convert(amount: Double, from: Currency, to: Currency): Double? {
-        val fromRate = perUsd[from.code] ?: return null
-        val toRate = perUsd[to.code] ?: return null
+    fun convert(amount: Double, from: Currency, to: Currency): Double? = convert(amount, from.code, to.code)
+
+    /** 통화 코드로 환산 (앱 통화 목록에 없는 통화도 가능, 예: FJD) */
+    fun convert(amount: Double, from: String, to: String): Double? {
+        val fromRate = perUsd[from] ?: return null
+        val toRate = perUsd[to] ?: return null
         return amount / fromRate * toRate
     }
 }

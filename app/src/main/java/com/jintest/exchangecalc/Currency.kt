@@ -14,7 +14,7 @@ data class Currency(
 ) {
     /** 국가 코드 두 글자를 국기 이모지로 바꾼다 (예: "KR" → 🇰🇷). */
     val flag: String
-        get() = country.uppercase(Locale.ROOT).map { String(Character.toChars(0x1F1E6 + (it - 'A'))) }.joinToString("")
+        get() = flagOf(country)
 
     fun matches(query: String): Boolean {
         val q = query.trim()
@@ -22,6 +22,10 @@ data class Currency(
             country.equals(q, ignoreCase = true)
     }
 }
+
+/** 국가 코드 두 글자 → 국기 이모지 (예: "KR" → 🇰🇷) */
+fun flagOf(iso2: String): String =
+    iso2.uppercase(Locale.ROOT).map { String(Character.toChars(0x1F1E6 + (it - 'A'))) }.joinToString("")
 
 /** 추가할 수 있는 통화 목록과 처음 설치했을 때의 기본 목록. */
 object Currencies {

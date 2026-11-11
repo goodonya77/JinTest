@@ -28,6 +28,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    sourceSets {
+        // 저장소의 data/ 폴더(여행 물가 데이터)를 앱 assets에 그대로 넣는다
+        getByName("main").assets.srcDir("../data")
+    }
     buildFeatures {
         compose = true
     }
