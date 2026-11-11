@@ -1,0 +1,77 @@
+# 나라별 도시 목록과 월별 성수기 (1월~12월 12글자: P=성수기, M=보통, O=비수기)
+# 형식: 종류(major=대표 도시, tourist=관광 도시·섬) | 도시 | 위도 | 경도 | 시즌
+# 시즌은 기후(우기·건기·더위)와 관광 시즌에 대한 일반 정보로 정리한 값 — 실제와 다를 수 있어 계속 보완
+@ KR
+major | 서울 | 37.57 | 126.98 | OOMPPMMMPPMM
+major | 부산 | 35.18 | 129.08 | OOMPPMPPPPMO
+tourist | 제주도 | 33.50 | 126.53 | OOMPPMPPMPMO
+tourist | 강릉 | 37.75 | 128.88 | OOOMMMPPMPMO
+tourist | 경주 | 35.84 | 129.21 | OOMPPMMMMPMO
+@ VN
+major | 호치민 | 10.78 | 106.70 | PPPPMOOOOOMP
+major | 하노이 | 21.03 | 105.85 | PPPPMOOOMPPP
+major | 다낭 | 16.05 | 108.22 | MMPPPPPPMOOO
+tourist | 나트랑 | 12.24 | 109.20 | MPPPPPPPMOOO
+tourist | 푸꾸옥 섬 | 10.22 | 103.96 | PPPPMOOOOOPP
+tourist | 호이안 | 15.88 | 108.33 | MPPPPPPPMOOO
+tourist | 달랏 | 11.94 | 108.44 | PPPMMMMMMOMP
+tourist | 사파 | 22.34 | 103.84 | MMPPPMOOPPPM
+tourist | 하롱베이 | 20.95 | 107.08 | MMPPPMMMPPPM
+@ TH
+major | 방콕 | 13.76 | 100.50 | PPMMOOOOOMPP
+major | 치앙마이 | 18.79 | 98.99 | PPOOOOOOMMPP
+tourist | 푸껫 섬 | 7.88 | 98.39 | PPPPMOOOOMPP
+tourist | 코사무이 섬 | 9.51 | 100.01 | PPPPPMMMMOOM
+tourist | 파타야 | 12.93 | 100.88 | PPMMOOOOOMPP
+tourist | 끄라비 | 8.09 | 98.91 | PPPPMOOOOMPP
+@ JP
+major | 도쿄 | 35.68 | 139.69 | MMPPPOMMMPPM
+major | 오사카 | 34.69 | 135.50 | MMPPPOMMMPPM
+major | 후쿠오카 | 33.59 | 130.40 | MMPPPOMMMPPM
+major | 삿포로 | 43.06 | 141.35 | MPMOMMPPMPOM
+tourist | 교토 | 35.01 | 135.77 | MMPPPOMMMPPM
+tourist | 오키나와 섬 | 26.21 | 127.68 | OOPPMMPPMMOO
+@ PH
+major | 마닐라 | 14.60 | 120.98 | PPPPPOOOOOMP
+major | 세부 | 10.32 | 123.89 | PPPPPMMMOOMP
+tourist | 보라카이 섬 | 11.97 | 121.92 | PPPPPOOOOMPP
+tourist | 보홀 섬 | 9.85 | 124.14 | PPPPPMMMOOMP
+tourist | 팔라완 엘니도 | 11.18 | 119.39 | PPPPPOOOOOMP
+@ TW
+major | 타이베이 | 25.03 | 121.57 | PPPPMOMMOPPP
+major | 가오슝 | 22.63 | 120.30 | PPPMOOOOOPPP
+major | 타이중 | 24.15 | 120.67 | PPPPMOMMOPPP
+tourist | 지우펀 | 25.11 | 121.84 | MMPPMOMMOPPM
+tourist | 화롄 | 23.99 | 121.60 | MMPPPMMMOPPM
+@ ID
+major | 자카르타 | -6.21 | 106.85 | OOOMMPPPPMOO
+major | 욕야카르타 | -7.80 | 110.36 | OOOMPPPPPMOM
+tourist | 발리 섬 | -8.41 | 115.19 | OOOMPPPPPMOP
+tourist | 롬복 섬 | -8.65 | 116.32 | OOOMPPPPPMOO
+@ US
+major | 뉴욕 | 40.71 | -74.01 | OOMMPPPPPPMP
+major | 로스앤젤레스 | 34.05 | -118.24 | MMMMMPPPMMMM
+major | 샌프란시스코 | 37.77 | -122.42 | OOMMPPPPPPMM
+tourist | 라스베이거스 | 36.17 | -115.14 | MMPPPMOOMPPM
+tourist | 하와이 호놀룰루 | 21.31 | -157.86 | PPPMMPPPOOMP
+@ FR
+major | 파리 | 48.86 | 2.35 | OOMPPPPPPPOM
+major | 리옹 | 45.76 | 4.84 | OOMMPPPMPMOP
+major | 마르세유 | 43.30 | 5.37 | OOMMPPPPPMOO
+tourist | 니스 | 43.70 | 7.27 | OMMMPPPPPMOO
+tourist | 몽생미셸 | 48.64 | -1.51 | OOMPPPPPPMOO
+tourist | 샤모니 | 45.92 | 6.87 | PPPMOPPPMOOP
+@ IT
+major | 로마 | 41.90 | 12.50 | OOMPPPMMPPOM
+major | 밀라노 | 45.46 | 9.19 | OOMPPPMOPPOM
+tourist | 베네치아 | 45.44 | 12.32 | OPMPPPPPPPOM
+tourist | 피렌체 | 43.77 | 11.26 | OOMPPPPMPPOM
+tourist | 아말피 해안 | 40.63 | 14.60 | OOOMPPPPPMOO
+tourist | 시칠리아 섬 | 38.12 | 13.36 | OOMPPPPPPMOO
+@ AU
+major | 시드니 | -33.87 | 151.21 | PPMMMOOOMMPP
+major | 멜버른 | -37.81 | 144.96 | PPMMOOOOMMPP
+major | 브리즈번 | -27.47 | 153.03 | PMMMMMPPMMMP
+tourist | 골드코스트 | -28.02 | 153.40 | PPMMMMPPMMMP
+tourist | 케언즈 | -16.92 | 145.77 | OOOMPPPPPPMO
+tourist | 울루루 | -25.34 | 131.04 | OOMMPPPPPMOO

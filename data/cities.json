@@ -1,0 +1,474 @@
+{
+ "version": 1,
+ "season_legend": {
+  "P": "성수기",
+  "M": "보통",
+  "O": "비수기"
+ },
+ "season_note": "기후(우기·건기·더위)와 관광 시즌 일반 정보로 정리한 값으로, 실제와 다를 수 있음",
+ "countries": {
+  "KR": [
+   {
+    "name": "서울",
+    "type": "major",
+    "lat": 37.57,
+    "lon": 126.98,
+    "season": "OOMPPMMMPPMM"
+   },
+   {
+    "name": "부산",
+    "type": "major",
+    "lat": 35.18,
+    "lon": 129.08,
+    "season": "OOMPPMPPPPMO"
+   },
+   {
+    "name": "제주도",
+    "type": "tourist",
+    "lat": 33.5,
+    "lon": 126.53,
+    "season": "OOMPPMPPMPMO"
+   },
+   {
+    "name": "강릉",
+    "type": "tourist",
+    "lat": 37.75,
+    "lon": 128.88,
+    "season": "OOOMMMPPMPMO"
+   },
+   {
+    "name": "경주",
+    "type": "tourist",
+    "lat": 35.84,
+    "lon": 129.21,
+    "season": "OOMPPMMMMPMO"
+   }
+  ],
+  "VN": [
+   {
+    "name": "호치민",
+    "type": "major",
+    "lat": 10.78,
+    "lon": 106.7,
+    "season": "PPPPMOOOOOMP"
+   },
+   {
+    "name": "하노이",
+    "type": "major",
+    "lat": 21.03,
+    "lon": 105.85,
+    "season": "PPPPMOOOMPPP"
+   },
+   {
+    "name": "다낭",
+    "type": "major",
+    "lat": 16.05,
+    "lon": 108.22,
+    "season": "MMPPPPPPMOOO"
+   },
+   {
+    "name": "나트랑",
+    "type": "tourist",
+    "lat": 12.24,
+    "lon": 109.2,
+    "season": "MPPPPPPPMOOO"
+   },
+   {
+    "name": "푸꾸옥 섬",
+    "type": "tourist",
+    "lat": 10.22,
+    "lon": 103.96,
+    "season": "PPPPMOOOOOPP"
+   },
+   {
+    "name": "호이안",
+    "type": "tourist",
+    "lat": 15.88,
+    "lon": 108.33,
+    "season": "MPPPPPPPMOOO"
+   },
+   {
+    "name": "달랏",
+    "type": "tourist",
+    "lat": 11.94,
+    "lon": 108.44,
+    "season": "PPPMMMMMMOMP"
+   },
+   {
+    "name": "사파",
+    "type": "tourist",
+    "lat": 22.34,
+    "lon": 103.84,
+    "season": "MMPPPMOOPPPM"
+   },
+   {
+    "name": "하롱베이",
+    "type": "tourist",
+    "lat": 20.95,
+    "lon": 107.08,
+    "season": "MMPPPMMMPPPM"
+   }
+  ],
+  "TH": [
+   {
+    "name": "방콕",
+    "type": "major",
+    "lat": 13.76,
+    "lon": 100.5,
+    "season": "PPMMOOOOOMPP"
+   },
+   {
+    "name": "치앙마이",
+    "type": "major",
+    "lat": 18.79,
+    "lon": 98.99,
+    "season": "PPOOOOOOMMPP"
+   },
+   {
+    "name": "푸껫 섬",
+    "type": "tourist",
+    "lat": 7.88,
+    "lon": 98.39,
+    "season": "PPPPMOOOOMPP"
+   },
+   {
+    "name": "코사무이 섬",
+    "type": "tourist",
+    "lat": 9.51,
+    "lon": 100.01,
+    "season": "PPPPPMMMMOOM"
+   },
+   {
+    "name": "파타야",
+    "type": "tourist",
+    "lat": 12.93,
+    "lon": 100.88,
+    "season": "PPMMOOOOOMPP"
+   },
+   {
+    "name": "끄라비",
+    "type": "tourist",
+    "lat": 8.09,
+    "lon": 98.91,
+    "season": "PPPPMOOOOMPP"
+   }
+  ],
+  "JP": [
+   {
+    "name": "도쿄",
+    "type": "major",
+    "lat": 35.68,
+    "lon": 139.69,
+    "season": "MMPPPOMMMPPM"
+   },
+   {
+    "name": "오사카",
+    "type": "major",
+    "lat": 34.69,
+    "lon": 135.5,
+    "season": "MMPPPOMMMPPM"
+   },
+   {
+    "name": "후쿠오카",
+    "type": "major",
+    "lat": 33.59,
+    "lon": 130.4,
+    "season": "MMPPPOMMMPPM"
+   },
+   {
+    "name": "삿포로",
+    "type": "major",
+    "lat": 43.06,
+    "lon": 141.35,
+    "season": "MPMOMMPPMPOM"
+   },
+   {
+    "name": "교토",
+    "type": "tourist",
+    "lat": 35.01,
+    "lon": 135.77,
+    "season": "MMPPPOMMMPPM"
+   },
+   {
+    "name": "오키나와 섬",
+    "type": "tourist",
+    "lat": 26.21,
+    "lon": 127.68,
+    "season": "OOPPMMPPMMOO"
+   }
+  ],
+  "PH": [
+   {
+    "name": "마닐라",
+    "type": "major",
+    "lat": 14.6,
+    "lon": 120.98,
+    "season": "PPPPPOOOOOMP"
+   },
+   {
+    "name": "세부",
+    "type": "major",
+    "lat": 10.32,
+    "lon": 123.89,
+    "season": "PPPPPMMMOOMP"
+   },
+   {
+    "name": "보라카이 섬",
+    "type": "tourist",
+    "lat": 11.97,
+    "lon": 121.92,
+    "season": "PPPPPOOOOMPP"
+   },
+   {
+    "name": "보홀 섬",
+    "type": "tourist",
+    "lat": 9.85,
+    "lon": 124.14,
+    "season": "PPPPPMMMOOMP"
+   },
+   {
+    "name": "팔라완 엘니도",
+    "type": "tourist",
+    "lat": 11.18,
+    "lon": 119.39,
+    "season": "PPPPPOOOOOMP"
+   }
+  ],
+  "TW": [
+   {
+    "name": "타이베이",
+    "type": "major",
+    "lat": 25.03,
+    "lon": 121.57,
+    "season": "PPPPMOMMOPPP"
+   },
+   {
+    "name": "가오슝",
+    "type": "major",
+    "lat": 22.63,
+    "lon": 120.3,
+    "season": "PPPMOOOOOPPP"
+   },
+   {
+    "name": "타이중",
+    "type": "major",
+    "lat": 24.15,
+    "lon": 120.67,
+    "season": "PPPPMOMMOPPP"
+   },
+   {
+    "name": "지우펀",
+    "type": "tourist",
+    "lat": 25.11,
+    "lon": 121.84,
+    "season": "MMPPMOMMOPPM"
+   },
+   {
+    "name": "화롄",
+    "type": "tourist",
+    "lat": 23.99,
+    "lon": 121.6,
+    "season": "MMPPPMMMOPPM"
+   }
+  ],
+  "ID": [
+   {
+    "name": "자카르타",
+    "type": "major",
+    "lat": -6.21,
+    "lon": 106.85,
+    "season": "OOOMMPPPPMOO"
+   },
+   {
+    "name": "욕야카르타",
+    "type": "major",
+    "lat": -7.8,
+    "lon": 110.36,
+    "season": "OOOMPPPPPMOM"
+   },
+   {
+    "name": "발리 섬",
+    "type": "tourist",
+    "lat": -8.41,
+    "lon": 115.19,
+    "season": "OOOMPPPPPMOP"
+   },
+   {
+    "name": "롬복 섬",
+    "type": "tourist",
+    "lat": -8.65,
+    "lon": 116.32,
+    "season": "OOOMPPPPPMOO"
+   }
+  ],
+  "US": [
+   {
+    "name": "뉴욕",
+    "type": "major",
+    "lat": 40.71,
+    "lon": -74.01,
+    "season": "OOMMPPPPPPMP"
+   },
+   {
+    "name": "로스앤젤레스",
+    "type": "major",
+    "lat": 34.05,
+    "lon": -118.24,
+    "season": "MMMMMPPPMMMM"
+   },
+   {
+    "name": "샌프란시스코",
+    "type": "major",
+    "lat": 37.77,
+    "lon": -122.42,
+    "season": "OOMMPPPPPPMM"
+   },
+   {
+    "name": "라스베이거스",
+    "type": "tourist",
+    "lat": 36.17,
+    "lon": -115.14,
+    "season": "MMPPPMOOMPPM"
+   },
+   {
+    "name": "하와이 호놀룰루",
+    "type": "tourist",
+    "lat": 21.31,
+    "lon": -157.86,
+    "season": "PPPMMPPPOOMP"
+   }
+  ],
+  "FR": [
+   {
+    "name": "파리",
+    "type": "major",
+    "lat": 48.86,
+    "lon": 2.35,
+    "season": "OOMPPPPPPPOM"
+   },
+   {
+    "name": "리옹",
+    "type": "major",
+    "lat": 45.76,
+    "lon": 4.84,
+    "season": "OOMMPPPMPMOP"
+   },
+   {
+    "name": "마르세유",
+    "type": "major",
+    "lat": 43.3,
+    "lon": 5.37,
+    "season": "OOMMPPPPPMOO"
+   },
+   {
+    "name": "니스",
+    "type": "tourist",
+    "lat": 43.7,
+    "lon": 7.27,
+    "season": "OMMMPPPPPMOO"
+   },
+   {
+    "name": "몽생미셸",
+    "type": "tourist",
+    "lat": 48.64,
+    "lon": -1.51,
+    "season": "OOMPPPPPPMOO"
+   },
+   {
+    "name": "샤모니",
+    "type": "tourist",
+    "lat": 45.92,
+    "lon": 6.87,
+    "season": "PPPMOPPPMOOP"
+   }
+  ],
+  "IT": [
+   {
+    "name": "로마",
+    "type": "major",
+    "lat": 41.9,
+    "lon": 12.5,
+    "season": "OOMPPPMMPPOM"
+   },
+   {
+    "name": "밀라노",
+    "type": "major",
+    "lat": 45.46,
+    "lon": 9.19,
+    "season": "OOMPPPMOPPOM"
+   },
+   {
+    "name": "베네치아",
+    "type": "tourist",
+    "lat": 45.44,
+    "lon": 12.32,
+    "season": "OPMPPPPPPPOM"
+   },
+   {
+    "name": "피렌체",
+    "type": "tourist",
+    "lat": 43.77,
+    "lon": 11.26,
+    "season": "OOMPPPPMPPOM"
+   },
+   {
+    "name": "아말피 해안",
+    "type": "tourist",
+    "lat": 40.63,
+    "lon": 14.6,
+    "season": "OOOMPPPPPMOO"
+   },
+   {
+    "name": "시칠리아 섬",
+    "type": "tourist",
+    "lat": 38.12,
+    "lon": 13.36,
+    "season": "OOMPPPPPPMOO"
+   }
+  ],
+  "AU": [
+   {
+    "name": "시드니",
+    "type": "major",
+    "lat": -33.87,
+    "lon": 151.21,
+    "season": "PPMMMOOOMMPP"
+   },
+   {
+    "name": "멜버른",
+    "type": "major",
+    "lat": -37.81,
+    "lon": 144.96,
+    "season": "PPMMOOOOMMPP"
+   },
+   {
+    "name": "브리즈번",
+    "type": "major",
+    "lat": -27.47,
+    "lon": 153.03,
+    "season": "PMMMMMPPMMMP"
+   },
+   {
+    "name": "골드코스트",
+    "type": "tourist",
+    "lat": -28.02,
+    "lon": 153.4,
+    "season": "PPMMMMPPMMMP"
+   },
+   {
+    "name": "케언즈",
+    "type": "tourist",
+    "lat": -16.92,
+    "lon": 145.77,
+    "season": "OOOMPPPPPPMO"
+   },
+   {
+    "name": "울루루",
+    "type": "tourist",
+    "lat": -25.34,
+    "lon": 131.04,
+    "season": "OOMMPPPPPMOO"
+   }
+  ]
+ }
+}

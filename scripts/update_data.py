@@ -17,7 +17,7 @@ OUT = ROOT / "data/generated"
 UA = {"User-Agent": "ExchangeCalc data updater (github.com/goodonya77/JinTest)"}
 
 WB_URL = ("https://api.worldbank.org/v2/country/all/indicator/PA.NUS.PPPC.RF"
-          "?format=json&per_page=20000&date=2010:2030")
+          "?format=json&per_page=1000&mrnev=1")  # 나라별 가장 최근의 값이 있는 해
 BIGMAC_URL = ("https://raw.githubusercontent.com/TheEconomist/big-mac-data/"
               "master/output-data/big-mac-full-index.csv")
 
@@ -33,7 +33,10 @@ def our_countries():
 
 
 def world_bank(countries):
-    meta, rows = json.loads(get(WB_URL))
+    body = json.loads(get(WB_URL))
+    if len(body) < 2 or body[1] is None:
+        raise SystemExit(f"세계은행 API 오류: {body}")
+    meta, rows = body
     latest = {}
     for row in rows:
         iso3, value = row.get("countryiso3code"), row.get("value")
