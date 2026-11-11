@@ -3,6 +3,10 @@
  "license": "CC BY 4.0",
  "url": "https://data.worldbank.org/indicator/PA.NUS.PPP",
  "note": "미국 = 1인 물가 수준. 한국 대비로 보려면 나라 값 ÷ 한국 값 × 100",
+ "excluded": {
+  "IRN": "공식 환율과 시장 환율 차이가 매우 큼 (복수 환율)",
+  "BGR": "2026년 유로 전환으로 PPP와 환율의 통화 단위가 섞여 있음"
+ },
  "countries": {
   "ALB": {
    "value": 0.4606,
@@ -42,10 +46,6 @@
   },
   "BGD": {
    "value": 0.2536,
-   "year": 2025
-  },
-  "BGR": {
-   "value": 0.2338,
    "year": 2025
   },
   "BHR": {
@@ -239,10 +239,6 @@
   "IRL": {
    "value": 0.8485,
    "year": 2025
-  },
-  "IRN": {
-   "value": 2.2448,
-   "year": 2023
   },
   "IRQ": {
    "value": 0.3792,
