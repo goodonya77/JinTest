@@ -72,20 +72,29 @@
    "cities": {
     "시드니": {
      "meal_cheap": {
-      "value": null,
-      "note": "Price of Travel guide (https://www.priceoftravel.com/9/australia/sydney-prices) gives only USD ranges and page date is unclear; no local-currency figure"
+      "value": 25.44,
+      "as_of": "2026-08",
+      "source": "https://www.timeout.com/sydney/news/revealed-the-average-sydney-prices-of-classic-dishes-right-now-110826",
+      "note": "Average chicken schnitzel price across 150 Sydney pub bistro menus (Time Out 'Price of a Parmi 2026'); same piece gives average across 15 classic meals 22.48. Search snippets only.",
+      "verified": false
      },
      "beer_restaurant": {
       "value": null,
       "note": "Price of Travel guide (https://www.priceoftravel.com/9/australia/sydney-prices) gives only USD pint range; no local-currency figure"
      },
      "taxi_base": {
-      "value": null,
-      "note": "NSW Fares Order 2025 PDFs found but flagfall amount not visible in snippets; search budget exhausted"
+      "value": 5.0,
+      "as_of": "2025-07",
+      "source": "https://gmcabs.com.au/fares/",
+      "note": "NSW urban maximum unbooked (rank & hail) flagfall 6am-10pm effective 2025-07-01, per GM Cabs fare page; matches IPART final recommendation (fact sheet 16 May 2025: 3.60 -> 5.00). Fares Order text not seen; possible CPI indexation from 2026-07 not checked. Search snippets only.",
+      "verified": false
      },
      "transit_single": {
-      "value": null,
-      "note": "Official TfNSW page shows train 0-10km peak A$4.20 but likely pre-2025-07-14 increase; A$4.33 only from third-party site"
+      "value": 4.33,
+      "as_of": "2025-07",
+      "source": "https://www.ipart.nsw.gov.au/sites/default/files/cm9_documents/Fact-sheet-Opal-fares-from-14-July-2025.PDF",
+      "note": "Opal adult train 0-10 km peak from 2025-07-14 (off-peak 3.03; bus 0-3 km differs). Time Out (Jun 2026) reports Opal fares held at 2025 prices for next 12 months; TfNSW notice of small changes from 2026-06-29 not detailed. Search snippets only.",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -101,12 +110,18 @@
     },
     "멜버른": {
      "meal_cheap": {
-      "value": null,
-      "note": "Price of Travel guide (https://www.priceoftravel.com/melbourne-price-guide) gives only USD ranges and page date is unclear; no local-currency figure"
+      "value": 28.13,
+      "as_of": "2026-08",
+      "source": "https://www.timeout.com/melbourne/news/these-are-the-average-melbourne-prices-of-classic-dishes-according-to-new-menu-data-110826",
+      "note": "Average chicken schnitzel price across 150 Melbourne pub/club menus (Time Out 2026); average across classic meals ~25. Search snippets only.",
+      "verified": false
      },
      "beer_restaurant": {
-      "value": null,
-      "note": "Price of Travel guide (https://www.priceoftravel.com/melbourne-price-guide) gives only USD pint range; no local-currency figure"
+      "value": 13.91,
+      "as_of": "2025",
+      "source": "https://www.yourlifechoices.com.au/food-recipes/remember-when-a-pint-cost-10-heres-what-youll-pay-for-a-beer-today/",
+      "note": "Average price of a pint (570ml) of Carlton Draught, Melbourne's most-ordered tap beer, per Square payment data. Article date not visible in snippets (content implies 2025-26; national avg 13.76, projected 14 by late 2027) - month unconfirmed. Search snippets only.",
+      "verified": false
      },
      "taxi_base": {
       "value": 4.5,
@@ -248,8 +263,11 @@
       "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
      },
      "taxi_base": {
-      "value": null,
-      "note": "Paris prefecture 2026 prise en charge not found; secondary sources conflict (4.10 / 4.18); national cap 4.48 EUR"
+      "value": 3.0,
+      "as_of": "2024-02",
+      "source": "https://www.prefectures-regions.gouv.fr/ile-de-france/ile-de-france/irecontenu/telechargement/114114/853093/file/recueil-75-2024-110-recueil-des-actes-administratifs-special du 21.02.2024.pdf",
+      "note": "Paris prefecture tariff arrete (RAA 2024-02-21): prise en charge 3.00 EUR for 250 m; G7 official fares page (g7.fr/en/paris-taxi-fares, undated) also gives pick-up 3 EUR, minimum fare 8 EUR. 2026 Paris arrete not found; 4.48 is only the national cap. Seen in search snippets only (pages not fetchable).",
+      "verified": false
      },
      "transit_single": {
       "value": 2.55,
@@ -313,8 +331,11 @@
       "note": "Alpes-Maritimes 2026 tariff not found; only national cap 4.48 EUR"
      },
      "transit_single": {
-      "value": null,
-      "note": "Lignes d'Azur Solo 1.70 EUR seen only in undated tourism pages; no 2024+ dated source confirmed"
+      "value": 1.7,
+      "as_of": "2026-09",
+      "source": "https://cotedazurfrance.fr/offres/bus-lignes-dazur-nice-fr-3042006/",
+      "note": "Lignes d'Azur Solo 1 voyage (bus+tram, 74 min) 1.70 EUR; regional tourism listing reportedly updated Sep 2026; also in several 2026 travel guides (tourismattractions.net 2026 page). One guide says 2.00 EUR if bought from driver. lignesdazur.com not checked; search snippets only.",
+      "verified": false
      },
      "hotel_mid": {
       "value": null,
@@ -526,8 +547,11 @@
    "cities": {
     "로마": {
      "meal_cheap": {
-      "value": null,
-      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+      "value": 11.45,
+      "as_of": "2026-05",
+      "source": "https://www.altroconsumo.it/alimentazione/pizza/news/prezzi-pizza-e-bevanda",
+      "note": "Altroconsumo 2026 survey: Rome average pizza + drink incl. cover 11.45 EUR (range 9-15); also reported by stol.it/web.de. Search snippets only.",
+      "verified": false
      },
      "beer_restaurant": {
       "value": null,
@@ -561,16 +585,22 @@
     },
     "밀라노": {
      "meal_cheap": {
-      "value": null,
-      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+      "value": 14.02,
+      "as_of": "2026-05",
+      "source": "https://www.greenme.it/lifestyle/costume-e-societa/quanto-spendi-per-una-pizza-con-bibita-la-classifica-delle-citta-in-cui-costa-di-piu-e-quelle-in-cui-te-la-cavi-con-meno-di-10-euro/",
+      "note": "Altroconsumo 2026 survey (30 cities, MIMIT price observatory data): average pizza (best-seller) + drink incl. cover charge, 'circa 14,02'. Search snippets only.",
+      "verified": false
      },
      "beer_restaurant": {
       "value": null,
       "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
      },
      "taxi_base": {
-      "value": null,
-      "note": "Milan meter departure fee not confirmed (sources give 3.50 generic or 4.10 unclear context)"
+      "value": 4.1,
+      "as_of": "2024-07",
+      "source": "https://www.ilsussidiario.net/news/taxi-nuovi-rincari-del-364-sulle-corse-a-milano-adeguamento-allinflazione-prezzi-fermi-da-2014/2725388/",
+      "note": "Weekday daytime starting fee after +3.64% increase of 2024-07-01 (holiday 6.60, night 21-6 7.90); same values in sicurauto.it 2026 Milan taxi guide, which says fares last raised Jul 2024. Comune tariff table not seen; search snippets only.",
+      "verified": false
      },
      "transit_single": {
       "value": 2.2,
@@ -593,8 +623,11 @@
     },
     "베네치아": {
      "meal_cheap": {
-      "value": null,
-      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+      "value": 13.84,
+      "as_of": "2026-05",
+      "source": "https://www.greenme.it/lifestyle/costume-e-societa/quanto-spendi-per-una-pizza-con-bibita-la-classifica-delle-citta-in-cui-costa-di-piu-e-quelle-in-cui-te-la-cavi-con-meno-di-10-euro/",
+      "note": "Altroconsumo 2026 survey: average pizza + drink incl. cover charge, 'circa 13,84' (2024 round was 13.47). Search snippets only.",
+      "verified": false
      },
      "beer_restaurant": {
       "value": null,
@@ -625,8 +658,11 @@
     },
     "피렌체": {
      "meal_cheap": {
-      "value": null,
-      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+      "value": 13.56,
+      "as_of": "2026-05",
+      "source": "https://www.greenme.it/lifestyle/costume-e-societa/quanto-spendi-per-una-pizza-con-bibita-la-classifica-delle-citta-in-cui-costa-di-piu-e-quelle-in-cui-te-la-cavi-con-meno-di-10-euro/",
+      "note": "Altroconsumo 2026 survey: average pizza + drink incl. cover charge, 'circa 13,56'. Search snippets only.",
+      "verified": false
      },
      "beer_restaurant": {
       "value": null,
