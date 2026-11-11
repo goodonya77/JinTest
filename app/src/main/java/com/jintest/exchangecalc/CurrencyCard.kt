@@ -56,15 +56,15 @@ fun trendColor(trend: Trend): Color {
  *     미국 달러
  *                 38.71   ← 환산 금액
  *  ───────────────
- *  1 USD = 25,836 VND     ← 선택된(입력) 통화 기준 환율
- *  전일            ▲18
- *  작년말          ▼462
+ *  1 USD = 1,334 KRW      ← 선택된 통화 1단위가 이 카드 통화로 얼마인지
+ *  전일            ▼3      ← 그 숫자의 변화 (전일 1,337 → 오늘 1,334)
+ *  작년말          ▼66     ← (작년말 1,400 → 오늘 1,334). 오르면 ▲빨강, 내리면 ▼파랑
  */
 @Composable
 fun CurrencyCard(
     currency: Currency,
     isHome: Boolean,
-    against: Currency,
+    base: Currency,
     converted: Double?,
     quote: Quote?,
     lifted: Boolean,
@@ -120,7 +120,7 @@ fun CurrencyCard(
             )
             HorizontalDivider()
             Text(
-                quote?.let { "%,d %s = %s %s".format(it.unit, currency.code, Formatter.number(it.value, it.decimals), against.code) } ?: "",
+                quote?.let { "%,d %s = %s %s".format(it.unit, base.code, Formatter.number(it.value, it.decimals), currency.code) } ?: "",
                 style = MaterialTheme.typography.labelMedium,
                 color = muted,
                 maxLines = 1,

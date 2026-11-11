@@ -223,10 +223,10 @@ private fun CardGrid(
                 CurrencyCard(
                     currency = c,
                     isHome = isHome,
-                    // 환율·증감·강약세는 모두 지금 선택된(입력) 통화 기준
-                    against = state.base,
+                    base = state.base,
                     converted = state.rates?.latest?.convert(amount, state.base, c),
-                    quote = state.rates?.quote(c, state.base),
+                    // 선택된 통화 1단위 = 이 카드 통화 얼마 (예: 1 USD = 1,334 KRW)와 그 증감
+                    quote = state.rates?.quote(state.base, c),
                     lifted = lifted,
                     layout = layout,
                     modifier = placement
@@ -371,9 +371,9 @@ private fun Hint(dragging: Boolean) {
                 append("카드를 누르면 기준 통화 변경 · ")
                 withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append("길게 누르면 순서 변경") }
                 append(" · ")
-                withStyle(SpanStyle(color = trendColor(Trend.UP))) { append("▲강세 ") }
-                withStyle(SpanStyle(color = trendColor(Trend.DOWN))) { append("▼약세") }
-                append(" (선택 통화 대비)")
+                withStyle(SpanStyle(color = trendColor(Trend.UP))) { append("▲올라감 ") }
+                withStyle(SpanStyle(color = trendColor(Trend.DOWN))) { append("▼내려감") }
+                append(" (선택 통화 1단위 기준 환율)")
             },
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
