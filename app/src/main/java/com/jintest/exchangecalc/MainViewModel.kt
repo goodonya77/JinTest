@@ -14,7 +14,7 @@ import kotlin.math.pow
 import kotlin.math.roundToInt
 
 data class UiState(
-    /** 거주국 통화. 카드의 환율·증감은 이 통화 기준. */
+    /** 거주국 통화. 처음 기준 통화이자 카드 목록 맨 앞, 위젯의 기준. */
     val home: Currency = Currencies.USD,
     /** 입력 금액의 통화. 처음엔 거주국 통화, 카드를 누르면 그 통화로 바뀐다. */
     val base: Currency = Currencies.USD,

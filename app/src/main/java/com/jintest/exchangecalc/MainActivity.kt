@@ -223,10 +223,10 @@ private fun CardGrid(
                 CurrencyCard(
                     currency = c,
                     isHome = isHome,
-                    // 거주국 카드는 거주국 통화 자신과 비교할 수 없으니 지금 기준 통화와 비교
-                    against = if (isHome) state.base else state.home,
+                    // 환율·증감·강약세는 모두 지금 선택된(입력) 통화 기준
+                    against = state.base,
                     converted = state.rates?.latest?.convert(amount, state.base, c),
-                    quote = state.rates?.quote(c, if (isHome) state.base else state.home),
+                    quote = state.rates?.quote(c, state.base),
                     lifted = lifted,
                     layout = layout,
                     modifier = placement
@@ -373,7 +373,7 @@ private fun Hint(dragging: Boolean) {
                 append(" · ")
                 withStyle(SpanStyle(color = trendColor(Trend.UP))) { append("▲강세 ") }
                 withStyle(SpanStyle(color = trendColor(Trend.DOWN))) { append("▼약세") }
-                append(" (거주국 통화 대비)")
+                append(" (선택 통화 대비)")
             },
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
