@@ -1,0 +1,174 @@
+# 대륙 > 지역 > 나라 (ISO2 ISO3 한국어이름 통화). 이 파일을 고친 뒤 scripts/build_regions.py 실행
+@ 아시아 🌏
+# 동아시아
+KR KOR 대한민국 KRW
+JP JPN 일본 JPY
+CN CHN 중국 CNY
+TW TWN 대만 TWD
+HK HKG 홍콩 HKD
+MO MAC 마카오 MOP
+MN MNG 몽골 MNT
+# 동남아시아
+VN VNM 베트남 VND
+TH THA 태국 THB
+ID IDN 인도네시아 IDR
+PH PHL 필리핀 PHP
+MY MYS 말레이시아 MYR
+SG SGP 싱가포르 SGD
+KH KHM 캄보디아 KHR
+LA LAO 라오스 LAK
+MM MMR 미얀마 MMK
+BN BRN 브루나이 BND
+TL TLS 동티모르 USD
+# 남아시아
+IN IND 인도 INR
+NP NPL 네팔 NPR
+LK LKA 스리랑카 LKR
+BD BGD 방글라데시 BDT
+PK PAK 파키스탄 PKR
+MV MDV 몰디브 MVR
+BT BTN 부탄 BTN
+# 중앙아시아
+KZ KAZ 카자흐스탄 KZT
+UZ UZB 우즈베키스탄 UZS
+KG KGZ 키르기스스탄 KGS
+TJ TJK 타지키스탄 TJS
+TM TKM 투르크메니스탄 TMT
+@ 유럽 🌍
+# 서유럽
+FR FRA 프랑스 EUR
+DE DEU 독일 EUR
+NL NLD 네덜란드 EUR
+BE BEL 벨기에 EUR
+LU LUX 룩셈부르크 EUR
+CH CHE 스위스 CHF
+AT AUT 오스트리아 EUR
+GB GBR 영국 GBP
+IE IRL 아일랜드 EUR
+MC MCO 모나코 EUR
+LI LIE 리히텐슈타인 CHF
+# 북유럽
+SE SWE 스웨덴 SEK
+NO NOR 노르웨이 NOK
+DK DNK 덴마크 DKK
+FI FIN 핀란드 EUR
+IS ISL 아이슬란드 ISK
+EE EST 에스토니아 EUR
+LV LVA 라트비아 EUR
+LT LTU 리투아니아 EUR
+# 남유럽
+IT ITA 이탈리아 EUR
+ES ESP 스페인 EUR
+PT PRT 포르투갈 EUR
+GR GRC 그리스 EUR
+MT MLT 몰타 EUR
+CY CYP 키프로스 EUR
+HR HRV 크로아티아 EUR
+SI SVN 슬로베니아 EUR
+ME MNE 몬테네그로 EUR
+AL ALB 알바니아 ALL
+MK MKD 북마케도니아 MKD
+RS SRB 세르비아 RSD
+BA BIH 보스니아헤르체고비나 BAM
+AD AND 안도라 EUR
+# 동유럽
+PL POL 폴란드 PLN
+CZ CZE 체코 CZK
+SK SVK 슬로바키아 EUR
+HU HUN 헝가리 HUF
+RO ROU 루마니아 RON
+BG BGR 불가리아 EUR
+UA UKR 우크라이나 UAH
+MD MDA 몰도바 MDL
+BY BLR 벨라루스 BYN
+RU RUS 러시아 RUB
+GE GEO 조지아 GEL
+AM ARM 아르메니아 AMD
+AZ AZE 아제르바이잔 AZN
+@ 미주 🌎
+# 북미
+US USA 미국 USD
+CA CAN 캐나다 CAD
+MX MEX 멕시코 MXN
+# 중미·카리브
+GT GTM 과테말라 GTQ
+BZ BLZ 벨리즈 BZD
+HN HND 온두라스 HNL
+SV SLV 엘살바도르 USD
+NI NIC 니카라과 NIO
+CR CRI 코스타리카 CRC
+PA PAN 파나마 USD
+CU CUB 쿠바 CUP
+DO DOM 도미니카공화국 DOP
+JM JAM 자메이카 JMD
+BS BHS 바하마 BSD
+TT TTO 트리니다드토바고 TTD
+BB BRB 바베이도스 BBD
+HT HTI 아이티 HTG
+# 남미
+BR BRA 브라질 BRL
+AR ARG 아르헨티나 ARS
+CL CHL 칠레 CLP
+PE PER 페루 PEN
+CO COL 콜롬비아 COP
+EC ECU 에콰도르 USD
+BO BOL 볼리비아 BOB
+PY PRY 파라과이 PYG
+UY URY 우루과이 UYU
+VE VEN 베네수엘라 VES
+GY GUY 가이아나 GYD
+SR SUR 수리남 SRD
+@ 오세아니아 🏝️
+# 호주·뉴질랜드
+AU AUS 호주 AUD
+NZ NZL 뉴질랜드 NZD
+# 태평양 섬나라
+GU GUM 괌(미국령) USD
+MP MNP 사이판·북마리아나제도(미국령) USD
+FJ FJI 피지 FJD
+PW PLW 팔라우 USD
+PG PNG 파푸아뉴기니 PGK
+WS WSM 사모아 WST
+TO TON 통가 TOP
+VU VUT 바누아투 VUV
+SB SLB 솔로몬제도 SBD
+FM FSM 미크로네시아 USD
+MH MHL 마셜제도 USD
+KI KIR 키리바시 AUD
+@ 중동·아프리카 🕌
+# 중동
+AE ARE 아랍에미리트 AED
+SA SAU 사우디아라비아 SAR
+QA QAT 카타르 QAR
+KW KWT 쿠웨이트 KWD
+BH BHR 바레인 BHD
+OM OMN 오만 OMR
+JO JOR 요르단 JOD
+IL ISR 이스라엘 ILS
+LB LBN 레바논 LBP
+TR TUR 튀르키예 TRY
+IR IRN 이란 IRR
+IQ IRQ 이라크 IQD
+# 북아프리카
+EG EGY 이집트 EGP
+MA MAR 모로코 MAD
+TN TUN 튀니지 TND
+DZ DZA 알제리 DZD
+# 사하라 이남
+ZA ZAF 남아프리카공화국 ZAR
+KE KEN 케냐 KES
+TZ TZA 탄자니아 TZS
+ET ETH 에티오피아 ETB
+NG NGA 나이지리아 NGN
+GH GHA 가나 GHS
+SN SEN 세네갈 XOF
+CI CIV 코트디부아르 XOF
+CM CMR 카메룬 XAF
+MU MUS 모리셔스 MUR
+SC SYC 세이셸 SCR
+MG MDG 마다가스카르 MGA
+RW RWA 르완다 RWF
+UG UGA 우간다 UGX
+NA NAM 나미비아 NAD
+BW BWA 보츠와나 BWP
+ZM ZMB 잠비아 ZMW

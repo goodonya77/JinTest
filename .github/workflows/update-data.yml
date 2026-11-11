@@ -1,0 +1,45 @@
+name: Update travel data
+
+# 공개 물가 데이터(세계은행, 빅맥 지수)를 받아 data/generated/ 에 저장하고 커밋한다.
+# 매달 1일 자동 실행 + 수동 실행 + 수집 스크립트를 고쳤을 때 실행
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 1 * *"
+  push:
+    paths:
+      - scripts/update_data.py
+      - data/regions.json
+      - .github/workflows/update-data.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch data
+        run: python scripts/update_data.py
+      - name: Show summary
+        run: |
+          python - <<'PY'
+          import json
+          pl = json.load(open("data/generated/price_level.json"))["countries"]
+          kor = pl["KOR"]["value"]
+          for c in ["VNM","THA","JPN","PHL","TWN","IDN","USA","FRA","ITA","AUS","CHE","IND"]:
+              v = pl.get(c)
+              print(c, v and f'{v["value"]/kor*100:.0f} (한국=100, {v["year"]}년)')
+          PY
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/generated
+          git diff --cached --quiet && echo "변경 없음" && exit 0
+          git commit -m "Update travel data (World Bank price level, Big Mac index)"
+          git push

@@ -1,0 +1,504 @@
+{
+ "source": "The Economist, The Big Mac index (github.com/TheEconomist/big-mac-data)",
+ "license": "저장소에 별도 라이선스 표기 없음 — 상업 이용 전 확인 필요",
+ "countries": {
+  "AND": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "ARE": {
+   "date": "2026-07-01",
+   "currency": "AED",
+   "local_price": 19.0,
+   "usd_price": 5.173
+  },
+  "ARG": {
+   "date": "2026-07-01",
+   "currency": "ARS",
+   "local_price": 8700.0,
+   "usd_price": 5.906
+  },
+  "AUS": {
+   "date": "2026-07-01",
+   "currency": "AUD",
+   "local_price": 8.5,
+   "usd_price": 5.95
+  },
+  "AUT": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "AZE": {
+   "date": "2026-07-01",
+   "currency": "AZN",
+   "local_price": 7.25,
+   "usd_price": 4.265
+  },
+  "BEL": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "BGR": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "BHR": {
+   "date": "2026-07-01",
+   "currency": "BHD",
+   "local_price": 1.8,
+   "usd_price": 4.774
+  },
+  "BRA": {
+   "date": "2026-07-01",
+   "currency": "BRL",
+   "local_price": 23.9,
+   "usd_price": 4.705
+  },
+  "CAN": {
+   "date": "2026-07-01",
+   "currency": "CAD",
+   "local_price": 8.17,
+   "usd_price": 5.814
+  },
+  "CHE": {
+   "date": "2026-07-01",
+   "currency": "CHF",
+   "local_price": 7.3,
+   "usd_price": 9.042
+  },
+  "CHL": {
+   "date": "2026-07-01",
+   "currency": "CLP",
+   "local_price": 4990.0,
+   "usd_price": 5.408
+  },
+  "CHN": {
+   "date": "2026-07-01",
+   "currency": "CNY",
+   "local_price": 26.5,
+   "usd_price": 3.914
+  },
+  "COL": {
+   "date": "2026-07-01",
+   "currency": "COP",
+   "local_price": 25900.0,
+   "usd_price": 8.003
+  },
+  "CRI": {
+   "date": "2026-07-01",
+   "currency": "CRC",
+   "local_price": 3150.0,
+   "usd_price": 6.996
+  },
+  "CYP": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "CZE": {
+   "date": "2026-07-01",
+   "currency": "CZK",
+   "local_price": 115.0,
+   "usd_price": 5.434
+  },
+  "DEU": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "DNK": {
+   "date": "2026-07-01",
+   "currency": "DKK",
+   "local_price": 46.0,
+   "usd_price": 7.037
+  },
+  "EGY": {
+   "date": "2026-07-01",
+   "currency": "EGP",
+   "local_price": 145.0,
+   "usd_price": 2.87
+  },
+  "ESP": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "EST": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "FIN": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "FRA": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "GBR": {
+   "date": "2026-07-01",
+   "currency": "GBP",
+   "local_price": 5.49,
+   "usd_price": 7.4
+  },
+  "GRC": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "GTM": {
+   "date": "2026-07-01",
+   "currency": "GTQ",
+   "local_price": 34.0,
+   "usd_price": 4.462
+  },
+  "HKG": {
+   "date": "2026-07-01",
+   "currency": "HKD",
+   "local_price": 25.5,
+   "usd_price": 3.253
+  },
+  "HND": {
+   "date": "2026-07-01",
+   "currency": "HNL",
+   "local_price": 139.0,
+   "usd_price": 5.192
+  },
+  "HRV": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "HUN": {
+   "date": "2026-07-01",
+   "currency": "HUF",
+   "local_price": 1660.0,
+   "usd_price": 5.298
+  },
+  "IDN": {
+   "date": "2026-07-01",
+   "currency": "IDR",
+   "local_price": 43000.0,
+   "usd_price": 2.38
+  },
+  "IND": {
+   "date": "2026-07-01",
+   "currency": "INR",
+   "local_price": 236.25,
+   "usd_price": 2.454
+  },
+  "IRL": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "ISR": {
+   "date": "2026-07-01",
+   "currency": "ILS",
+   "local_price": 23.0,
+   "usd_price": 7.668
+  },
+  "ITA": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "JOR": {
+   "date": "2026-07-01",
+   "currency": "JOD",
+   "local_price": 2.5,
+   "usd_price": 3.526
+  },
+  "JPN": {
+   "date": "2026-07-01",
+   "currency": "JPY",
+   "local_price": 500.0,
+   "usd_price": 3.084
+  },
+  "KOR": {
+   "date": "2026-07-01",
+   "currency": "KRW",
+   "local_price": 5700.0,
+   "usd_price": 3.836
+  },
+  "KWT": {
+   "date": "2026-07-01",
+   "currency": "KWD",
+   "local_price": 1.4,
+   "usd_price": 4.523
+  },
+  "LBN": {
+   "date": "2026-07-01",
+   "currency": "LBP",
+   "local_price": 480000.0,
+   "usd_price": 5.36
+  },
+  "LKA": {
+   "date": "2024-01-01",
+   "currency": "LKR",
+   "local_price": 1820.0,
+   "usd_price": 5.688
+  },
+  "LTU": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "LUX": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "LVA": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "MCO": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "MDA": {
+   "date": "2026-07-01",
+   "currency": "MDL",
+   "local_price": 80.0,
+   "usd_price": 4.558
+  },
+  "MEX": {
+   "date": "2026-07-01",
+   "currency": "MXN",
+   "local_price": 109.0,
+   "usd_price": 6.269
+  },
+  "MLT": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "MNE": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "MYS": {
+   "date": "2026-07-01",
+   "currency": "MYR",
+   "local_price": 14.55,
+   "usd_price": 3.568
+  },
+  "NIC": {
+   "date": "2026-07-01",
+   "currency": "NIO",
+   "local_price": 187.0,
+   "usd_price": 5.106
+  },
+  "NLD": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "NOR": {
+   "date": "2026-07-01",
+   "currency": "NOK",
+   "local_price": 78.0,
+   "usd_price": 8.053
+  },
+  "NZL": {
+   "date": "2026-07-01",
+   "currency": "NZD",
+   "local_price": 8.8,
+   "usd_price": 5.136
+  },
+  "OMN": {
+   "date": "2026-07-01",
+   "currency": "OMR",
+   "local_price": 1.53,
+   "usd_price": 3.974
+  },
+  "PAK": {
+   "date": "2026-07-01",
+   "currency": "PKR",
+   "local_price": 1080.0,
+   "usd_price": 3.886
+  },
+  "PER": {
+   "date": "2026-07-01",
+   "currency": "PEN",
+   "local_price": 16.9,
+   "usd_price": 4.992
+  },
+  "PHL": {
+   "date": "2026-07-01",
+   "currency": "PHP",
+   "local_price": 169.0,
+   "usd_price": 2.74
+  },
+  "POL": {
+   "date": "2026-07-01",
+   "currency": "PLN",
+   "local_price": 23.5,
+   "usd_price": 6.218
+  },
+  "PRT": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "QAT": {
+   "date": "2026-07-01",
+   "currency": "QAR",
+   "local_price": 18.0,
+   "usd_price": 4.944
+  },
+  "ROU": {
+   "date": "2026-07-01",
+   "currency": "RON",
+   "local_price": 18.35,
+   "usd_price": 4.005
+  },
+  "RUS": {
+   "date": "2022-01-01",
+   "currency": "RUB",
+   "local_price": 135.0,
+   "usd_price": 1.744
+  },
+  "SAU": {
+   "date": "2026-07-01",
+   "currency": "SAR",
+   "local_price": 19.0,
+   "usd_price": 5.06
+  },
+  "SGP": {
+   "date": "2026-07-01",
+   "currency": "SGD",
+   "local_price": 7.45,
+   "usd_price": 5.775
+  },
+  "SVK": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "SVN": {
+   "date": "2026-07-01",
+   "currency": "EUR",
+   "local_price": 6.19,
+   "usd_price": 7.079,
+   "euro_area_average": true
+  },
+  "SWE": {
+   "date": "2026-07-01",
+   "currency": "SEK",
+   "local_price": 69.0,
+   "usd_price": 7.161
+  },
+  "THA": {
+   "date": "2026-07-01",
+   "currency": "THB",
+   "local_price": 135.0,
+   "usd_price": 4.015
+  },
+  "TUR": {
+   "date": "2026-07-01",
+   "currency": "TRY",
+   "local_price": 325.0,
+   "usd_price": 6.911
+  },
+  "TWN": {
+   "date": "2026-07-01",
+   "currency": "TWD",
+   "local_price": 78.0,
+   "usd_price": 2.423
+  },
+  "UKR": {
+   "date": "2026-07-01",
+   "currency": "UAH",
+   "local_price": 149.0,
+   "usd_price": 3.336
+  },
+  "URY": {
+   "date": "2026-07-01",
+   "currency": "UYU",
+   "local_price": 359.0,
+   "usd_price": 8.938
+  },
+  "USA": {
+   "date": "2026-07-01",
+   "currency": "USD",
+   "local_price": 6.22,
+   "usd_price": 6.22
+  },
+  "VEN": {
+   "date": "2026-07-01",
+   "currency": "VES",
+   "local_price": 3267.0,
+   "usd_price": 4.507
+  },
+  "VNM": {
+   "date": "2026-07-01",
+   "currency": "VND",
+   "local_price": 76000.0,
+   "usd_price": 2.895
+  },
+  "ZAF": {
+   "date": "2026-07-01",
+   "currency": "ZAR",
+   "local_price": 56.9,
+   "usd_price": 3.485
+  }
+ }
+}
