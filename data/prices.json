@@ -1,0 +1,1865 @@
+{
+ "version": 1,
+ "spec": "data/prices_spec.md",
+ "note": "검색 결과 요약 기반 1차 조사값. verified=true로 바뀐 값만 공식 페이지에서 직접 확인한 값",
+ "countries": {
+  "AU": {
+   "currency": "AUD",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "Only third-party menu aggregators found (A$5.50-8.00, conflicting); no official/press source"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "AU standard single bottle is 600ml; store listings (~A$4.20-4.60) undated"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "WebFetch blocked in session and search budget exhausted; not found"
+    },
+    "iphone_base": {
+     "value": 1399,
+     "as_of": "2025-09",
+     "source": "https://www.shopback.com.au/guide/how-to/iphone-17-australia-best-price",
+     "note": "iPhone 17 256GB Apple RRP at launch (apple.com/au unreachable); also on finder.com.au; verify still latest base model",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 20.99,
+     "as_of": "2025-08",
+     "source": "https://ia.acs.org.au/article/2025/-pay-a-bit-more---netflix-increases-australian-prices.html",
+     "note": "Standard (no ads) raised from A$18.99 to A$20.99 effective 2025-08-08",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 15.99,
+     "as_of": "2026-07",
+     "source": "https://www.spotify.com/au/promo/60dt/",
+     "note": "Premium Individual A$15.99/mo after promo (official promo page)",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "cable.co.uk unreachable (host blocked); search snippets did not show a 2024+ figure for this country"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "cable.co.uk unreachable; only 2022 figure (US$59.42) found, too old"
+    },
+    "petrol_1l": {
+     "value": 1.74,
+     "as_of": "2026-06",
+     "source": "https://www.globalpetrolprices.com/Australia/",
+     "note": "GPP gasoline 95, dated 08.06.2026; volatile in 2026 (A$2.08 in March)",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 0.39,
+     "as_of": "2025-09",
+     "source": "https://www.globalpetrolprices.com/Australia/electricity_prices/",
+     "note": "GPP household A$0.390/kWh (country table shows 0.40 dated 01.09.2025)",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": 129,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com/au/en/p/billy-bookcase-white-10616564",
+     "note": "Regular price A$129; on promotion A$116.10 until 2026-11-30",
+     "verified": false
+    }
+   },
+   "cities": {
+    "시드니": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Price of Travel guide (https://www.priceoftravel.com/9/australia/sydney-prices) gives only USD ranges and page date is unclear; no local-currency figure"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Price of Travel guide (https://www.priceoftravel.com/9/australia/sydney-prices) gives only USD pint range; no local-currency figure"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "NSW Fares Order 2025 PDFs found but flagfall amount not visible in snippets; search budget exhausted"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Official TfNSW page shows train 0-10km peak A$4.20 but likely pre-2025-07-14 increase; A$4.33 only from third-party site"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "No reliable survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 76.65,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/australia-new-zealand-backpacker-index",
+      "note": "Australia & NZ Backpacker Index 2025; USD recalculated daily",
+      "verified": false
+     }
+    },
+    "멜버른": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Price of Travel guide (https://www.priceoftravel.com/melbourne-price-guide) gives only USD ranges and page date is unclear; no local-currency figure"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Price of Travel guide (https://www.priceoftravel.com/melbourne-price-guide) gives only USD pint range; no local-currency figure"
+     },
+     "taxi_base": {
+      "value": 4.5,
+      "as_of": "2025-09",
+      "source": "https://www.esc.vic.gov.au/transport/commercial-passenger-vehicle-prices/maximum-taxi-fares",
+      "note": "ESC max unbooked flagfall, Melbourne metro, from 2025-09-23",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 5.7,
+      "as_of": "2026-01",
+      "source": "https://www.busnews.com.au/victoria-increases-pt-fares-for-2026/",
+      "note": "myki full-fare 2-hour Zone 1+2 from 2026-01-01 (PTV page cached A$5.50 for 2025)",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "No reliable survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 87.04,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/australia-new-zealand-backpacker-index",
+      "note": "Australia & NZ Backpacker Index 2025; USD recalculated daily",
+      "verified": false
+     }
+    },
+    "브리즈번": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Price of Travel guide (https://www.priceoftravel.com/brisbane-price-guide) gives only USD ranges and page date is unclear; no local-currency figure"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Price of Travel guide (https://www.priceoftravel.com/brisbane-price-guide) gives only USD pint range; no local-currency figure"
+     },
+     "taxi_base": {
+      "value": 3.8,
+      "as_of": "2026-07",
+      "source": "https://www.tmr.qld.gov.au/_/media/busind/taxiandlimousine/taxi-passenger-fares/passenger_fares_taxis_south_east_queensland_vehicle_sticker.pdf",
+      "note": "SEQ flagfall weekdays 7am-7pm (A$6.20 other times); 2025 was A$3.70. Sticker date not confirmed",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 0.5,
+      "as_of": "2026-01",
+      "source": "https://translink.com.au/tickets-and-fares/50-cent-fares",
+      "note": "Flat 50c fare all zones/modes (from 2024-08, made permanent); Airtrain excluded",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "No reliable survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 90.82,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/australia-new-zealand-backpacker-index",
+      "note": "Australia & NZ Backpacker Index 2025; USD recalculated daily",
+      "verified": false
+     }
+    }
+   }
+  },
+  "FR": {
+   "currency": "EUR",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "only an undated third-party menu site (fastfoodsmenu.com, 4.10 EUR) found; no official/2024+ dated source"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "not found within search budget (direct page fetch blocked in this environment)"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "not found within search budget (direct page fetch blocked in this environment)"
+    },
+    "iphone_base": {
+     "value": 1119,
+     "as_of": "2026-10",
+     "source": "https://www.blog-nouvelles-technologies.fr/373075/iphone-18-pro-prix-hausse-apple/",
+     "note": "iPhone 17 256GB; article citing apple.com/fr on 2026-10-09 says +150 EUR in Sept 2026 (launch price 969 EUR). Not verified on apple.com directly; consomac.fr deal posts also cite 1119 EUR list price",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 14.99,
+     "as_of": "2026-01",
+     "source": "https://www.tv-direct.fr/offre/netflix/",
+     "note": "Standard (no ads), 2026 price guide; not verified on netflix.com directly",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 12.14,
+     "as_of": "2025-06",
+     "source": "https://www.digitalmusicnews.com/2025/06/05/spotify-france-price-increase-june-2025/",
+     "note": "Premium Personnel after June 2025 increase; a 2026 increase (Paris Match BE, Aug 2026, 13.99) could not be confirmed for France",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": 0.2,
+     "as_of": "2026-06",
+     "source": "https://cellesim.com/en/mobile-data-prices-worldwide-2026",
+     "note": "secondhand: Cellesim figure attributed to Cable.co.uk 2026 study; not verified on cable.co.uk (blocked)",
+     "verified": false
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "Cable.co.uk France figure not found; only broadband.co.uk/Broadband Genie 2026 league ($29.77, identical for FR and IT, looks unreliable)"
+    },
+    "petrol_1l": {
+     "value": 1.69,
+     "as_of": "2026-02",
+     "source": "https://www.globalpetrolprices.com/France/gasoline_prices/",
+     "note": "Octane-95, GPP page dated 09-Feb-2026 (latest seen); fuel-prices.eu shows ~2.18 EUR for Oct 2026, so likely stale",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 0.232,
+     "as_of": "2026-03",
+     "source": "https://www.globalpetrolprices.com/France/electricity_prices/",
+     "note": "household, GPP table dated 2026-03-01 (another GPP page shows 0.236)",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": 59.99,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com/fr/fr/p/billy-bibliotheque-blanc-20522046/",
+     "note": "official IKEA FR product page via search index; capture date not shown",
+     "verified": false
+    }
+   },
+   "cities": {
+    "파리": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Paris prefecture 2026 prise en charge not found; secondary sources conflict (4.10 / 4.18); national cap 4.48 EUR"
+     },
+     "transit_single": {
+      "value": 2.55,
+      "as_of": "2026-01",
+      "source": "https://www.ratp.fr/titres-et-tarifs/ticket-metro-train-rer",
+      "note": "Ticket Metro-Train-RER full fare from 2026-01-01 (Bus-Tram ticket 2.05)",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": 109.28,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/europe-backpacker-index",
+      "note": "Europe Backpacker Index 2025 edition (month not shown); Paris price page shows 121.99",
+      "verified": false
+     }
+    },
+    "리옹": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Rhone prefectoral 2026 tariff not found; only national cap 4.48 EUR"
+     },
+     "transit_single": {
+      "value": 2.1,
+      "as_of": "2025-07",
+      "source": "https://www.tcl.fr/en/tickets-fares/fares/1-trip",
+      "note": "TCL 1 trip zones 1+2 (2.40 on board); price in TCL CB leaflet 2025-07; post-Sept-2026 change not confirmed",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Lyon figure not found (search budget exhausted)"
+     }
+    },
+    "니스": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Alpes-Maritimes 2026 tariff not found; only national cap 4.48 EUR"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Lignes d'Azur Solo 1.70 EUR seen only in undated tourism pages; no 2024+ dated source confirmed"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Nice figure not found (search budget exhausted)"
+     }
+    }
+   }
+  },
+  "ID": {
+   "currency": "IDR",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "only undated Tokopedia blog (Rp38,000 tall) found; no 2024+ dated source"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "iphone_base": {
+     "value": 20499000,
+     "as_of": "2026-10",
+     "source": "https://teknologi.bisnis.com/read/20261030/280/2016955/update-harga-iphone-30-oktober-2026-iphone-17-series-naik-di-ibox",
+     "note": "iPhone 17 256GB at iBox (Apple authorised reseller; no Apple Store price seen). Raised from Rp19,999,000 on 2026-10-30; launch price Oct 2025 was Rp17,249,000",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "spotify_premium": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "petrol_1l": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "electricity_kwh": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "ikea_billy": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    }
+   },
+   "cities": {
+    "자카르타": {
+     "meal_cheap": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "taxi_base": {
+      "value": 9000,
+      "as_of": "2024-01",
+      "source": "https://www.fortuneidn.com/news/eko-wahyudi/tarif-taksi-bluebird-reguler-dan-listrik-naik-di-2024-segini-jadinya",
+      "note": "Bluebird regular taxi flag-fall Jabodetabek, raised from Rp8,500 in 2024 (month approx.); electric Rp10,000. Press report, not official tariff page",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 3500,
+      "as_of": "2026-01",
+      "source": "https://ekonomi.bisnis.com/read/20260108/98/1942749/tarif-transjakarta-batal-naik-anggaran-bakal-dikerek-jadi-rp48-triliun",
+      "note": "Transjakarta flat fare; planned increase cancelled for 2026 (review ongoing as of Jul 2026)",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no authoritative mid-range hotel survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 24.38,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025 (only year stated; month unknown, as_of set to 2025-01). Seen via search snippet; site not fetchable in this session; IDR395,000/day. Jakarta city guide shows US$22.08",
+      "verified": false
+     }
+    },
+    "발리 섬": {
+     "meal_cheap": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "no official/2024+ Bluebird Bali flag-fall found (only a third-party ~Rp7,000 estimate)"
+     },
+     "transit_single": {
+      "value": 4400,
+      "as_of": "2025-10",
+      "source": "https://www.metrotvnews.com/read/NgxCDX67-cuma-modal-rp4400-bisa-keliling-bali-yuk-naik-trans-metro-dewata-ini-jadwal-dan-rute-rutenya",
+      "note": "Trans Metro Dewata flat fare (schedule effective 2025-10-05)",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no authoritative mid-range hotel survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 28.23,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025 (only year stated; month unknown, as_of set to 2025-01). Seen via search snippet; site not fetchable in this session; Kuta, Bali entry, IDR457,400/day. Kuta guide shows US$27.17",
+      "verified": false
+     }
+    }
+   }
+  },
+  "IT": {
+   "currency": "EUR",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "only a 2023 Torino Outlet menu (2.50 EUR) found; no 2024+ source"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "not found within search budget (direct page fetch blocked in this environment)"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "not found within search budget (direct page fetch blocked in this environment)"
+    },
+    "iphone_base": {
+     "value": 1129,
+     "as_of": "2026-09",
+     "source": "https://www.smartworld.it/news/iphone-17-18-pro-aumenti-italia.html",
+     "note": "iPhone 17 256GB; raised from 979 to 1129 EUR at iPhone 18 Pro launch per Smartworld; not verified on apple.com/it",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 14.99,
+     "as_of": "2026-11",
+     "source": "https://pasqualepillitteri.it/news/30677/netflix-aumento-prezzi-italia-2026",
+     "note": "Standard (no ads) from 2026-11-05 (was 13.99); single source for the date",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 11.99,
+     "as_of": "2026-09",
+     "source": "https://www.spotify.com/it/intro/",
+     "note": "Premium Individual, official page (increase from 10.99 in Sept 2025)",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": 0.09,
+     "as_of": "2026-06",
+     "source": "https://www.cable.co.uk/mobiles/worldwide-data-pricing/",
+     "note": "Cable.co.uk text seen via search snippet; edition assumed 2026 (not fetched directly)",
+     "verified": false
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "Cable.co.uk Italy figure not found; only broadband.co.uk/Broadband Genie 2026 league ($29.77, identical for FR and IT, looks unreliable)"
+    },
+    "petrol_1l": {
+     "value": 2.06,
+     "as_of": "2026-09",
+     "source": "https://www.globalpetrolprices.com/Italy/gasoline_prices/",
+     "note": "Octane-95, GPP updated 07-Sep-2026",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 0.33,
+     "as_of": "2025-06",
+     "source": "https://www.globalpetrolprices.com/Italy/electricity_prices/",
+     "note": "household, GPP table dated 2025-06-01 (latest shown)",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": null,
+     "note": "IKEA Italy price for 80x28x202 white (00263850) not found in search results"
+    }
+   },
+   "cities": {
+    "로마": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": 3.5,
+      "as_of": "2026-05",
+      "source": "https://www.money.it/quanto-costa-una-corsa-in-taxi-nelle-grandi-citta-italiane",
+      "note": "weekday departure fee per Roma Capitale delibera n.157 of 2026-05-21 (Sat/holiday 5.00, night 7.50)",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 1.5,
+      "as_of": "2025-07",
+      "source": "https://www.turismoroma.it/it/notizie/roma-novit%C3%A0-trasporti-dal-1%C2%B0-luglio-vigore-nuove-tariffe%C2%A0",
+      "note": "BIT 100 min, unchanged in latest fare revision; proposed 2.00 not in effect per 2026 guides",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": 116.57,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/cheapest-places-visit",
+      "note": "Backpacker Index 2025 edition (table labelled 2024; recalculated daily by FX)",
+      "verified": false
+     }
+    },
+    "밀라노": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Milan meter departure fee not confirmed (sources give 3.50 generic or 4.10 unclear context)"
+     },
+     "transit_single": {
+      "value": 2.2,
+      "as_of": "2026-01",
+      "source": "https://moveo.telepass.com/biglietto-atm-milano-2026/",
+      "note": "ATM biglietto ordinario Mi1-Mi3, 90 min; price frozen per Oct 2025 news",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": 111.51,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/cheapest-places-visit",
+      "note": "Backpacker Index 2025 edition (table labelled 2024; recalculated daily by FX)",
+      "verified": false
+     }
+    },
+    "베네치아": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "no official land-taxi (Piazzale Roma/Mestre) tariff found; water taxi differs"
+     },
+     "transit_single": {
+      "value": 9.5,
+      "as_of": "2026-01",
+      "source": "https://www.veneziaunica.it/it/acquista-i-biglietti/trasporto-pubblico-a-venezia/actv-biglietto-ordinario-75",
+      "note": "ACTV 75-min ticket (vaporetto + bus in Venice); official page undated, 2026 guides give same price; mainland-only bus fares are lower",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": 141.0,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/cheapest-places-visit",
+      "note": "Backpacker Index 2025 edition (table labelled 2024; recalculated daily by FX)",
+      "verified": false
+     }
+    },
+    "피렌체": {
+     "meal_cheap": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "no non-Numbeo source with a local-currency figure found; priceoftravel city pages not fetchable"
+     },
+     "taxi_base": {
+      "value": 3.6,
+      "as_of": "2024-01",
+      "source": "https://visitflorence.com/it/muoversi-a-firenze/in-taxi.html",
+      "note": "weekday daytime departure; references Comune tariffs updated 01/01/24 (Sun/holiday 5.80, night 7.30)",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 2.0,
+      "as_of": "2026-08",
+      "source": "https://www.lanazione.it/firenze/cronaca/stangata-sui-trasporti-biglietti-piu-cari-per-tram-e-bus-spiraglio-per-gli-studenti-i01r3ni7",
+      "note": "Autolinee Toscane 90-min ticket raised 1.70->2.00 from 2026-08-01 per La Nazione (Jul 2026); not confirmed on at-bus.it",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no reliable survey figure found"
+     },
+     "backpacker_daily_usd": {
+      "value": 129.3,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/cheapest-places-visit",
+      "note": "Backpacker Index 2025 edition (table labelled 2024; recalculated daily by FX)",
+      "verified": false
+     }
+    }
+   }
+  },
+  "JP": {
+   "currency": "JPY",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "2026.2/2026.10 가격 인상 보도는 있으나 카페 아메리카노 Tall 가격 미확인"
+    },
+    "coke_500ml": {
+     "value": 220,
+     "as_of": "2026-09",
+     "source": "https://www.coca-cola.com/jp/ja/media-center/news-20260716-11",
+     "note": "메이커 희망소매가 세전(税抜) 200→220엔, 2026.9.1 출하분부터. 세금 포함 판매가 아님",
+     "verified": false
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "500ml 생수 편의점 가격 2024년 이후 출처 미확인"
+    },
+    "iphone_base": {
+     "value": 159800,
+     "as_of": "2026-09",
+     "source": "https://news.kakaku.com/prdnews/cd=keitai/ctcd=3147/id=158757/",
+     "note": "iPhone 17 256GB, 2026.9 Apple Store 온라인 가격 개정(142,800→159,800엔) 보도. 출처 URL 귀속 불확실, Apple 공식 페이지 직접 확인 못함",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 1590,
+     "as_of": "2026-03",
+     "source": "https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/which-plan-cheaper-netflix-2026/blt77b9f0c3263d260b",
+     "note": "2026.3.27 시점 스탠다드 월 1,590엔 (2024.10 인상 이후). 언론 기사, 공식 페이지 미확인",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 1080,
+     "as_of": "2025-08",
+     "source": "https://appllio.com/news/2025-08-05-66296-spotify-premium-price-revision",
+     "note": "Premium Standard(개인) 980→1,080엔, 2025.8 발표. 공식 페이지 미확인",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "Cable.co.uk 페이지에서 USD 3.48 확인되나 조사연도 미확인 (2026 2차 자료엔 3.21)"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "Cable.co.uk 일본 수치 미확인 (cable.co.uk 직접 접속 불가)"
+    },
+    "petrol_1l": {
+     "value": 154.7,
+     "as_of": "2026-02",
+     "source": "https://www.globalpetrolprices.com/Japan/gasoline_prices/",
+     "note": "09-Feb-2026 기준 (검색 캐시). 2026.3 이후 급등·보조금으로 크게 변동",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 35.405,
+     "as_of": "2025-09",
+     "source": "https://www.globalpetrolprices.com/Japan/electricity_prices/",
+     "note": "가정용, 01.09.2025 기준 (전기 페이지엔 35.872도 표시)",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": 8999,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com/jp/en/p/billy-bookcase-white-00522047",
+     "note": "IKEA Japan 공식 페이지 검색 스냅샷, 세금 포함. 스냅샷 날짜 미표시",
+     "verified": false
+    }
+   },
+   "cities": {
+    "도쿄": {
+     "meal_cheap": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "backpacker_daily_usd": {
+      "value": 68.02,
+      "as_of": "2025-06",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "2025 Asia Backpacker Index (JPY10,664). 도쿄 가이드엔 67.92",
+      "verified": false
+     }
+    },
+    "오사카": {
+     "meal_cheap": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel 2025 Asia Backpacker Index에 해당 도시 수치 미확인 (priceoftravel.com 직접 접속 불가)"
+     }
+    },
+    "후쿠오카": {
+     "meal_cheap": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel 2025 Asia Backpacker Index에 해당 도시 수치 미확인 (priceoftravel.com 직접 접속 불가)"
+     }
+    },
+    "삿포로": {
+     "meal_cheap": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "웹 검색 예산 소진으로 조사 못함"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel 2025 Asia Backpacker Index에 해당 도시 수치 미확인 (priceoftravel.com 직접 접속 불가)"
+     }
+    }
+   }
+  },
+  "KR": {
+   "currency": "KRW",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": 4700,
+     "as_of": "2025-01",
+     "source": "https://www.segye.com/newsView/20250120518639",
+     "note": "2025.1.24 4,500→4,700원 인상 보도. 이후 변동 미확인",
+     "verified": false
+    },
+    "coke_500ml": {
+     "value": 2600,
+     "as_of": "2026-08",
+     "source": "https://www.hankyung.com/article/202607228858i",
+     "note": "편의점 가격, 2026.8.1부터 2,400→2,600원 인상 보도",
+     "verified": false
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "편의점 생수 500ml 정상가 2024년 이후 출처 미확인 (온라인 묶음가만 확인)"
+    },
+    "iphone_base": {
+     "value": 1450000,
+     "as_of": "2026-09",
+     "source": "https://www.mt.co.kr/en/tech/2026/09/10/2026091009364717916",
+     "note": "iPhone 17 256GB. 2026.9 애플코리아 가격 인상(1,287,000→1,450,000원) 언론 보도; Apple 공식 페이지 직접 확인 못함",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 13500,
+     "as_of": "2026-10",
+     "source": "https://help.netflix.com/ko/node/24926/kr",
+     "note": "스탠다드 월 13,500원 (공식 도움말센터, 검색 결과로 확인)",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": null,
+     "note": "블로그에서 월 11,990원 확인되나 Spotify 공식 페이지 확인 못함"
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "Cable.co.uk 페이지에서 USD 5.01 확인되나 조사연도 미확인 (cable.co.uk 직접 접속 불가)"
+    },
+    "broadband_month_usd": {
+     "value": 25.99,
+     "as_of": "2024-05",
+     "source": "https://www.ispreview.co.uk/index.php/2024/05/study-uk-falls-to-rank-96th-cheapest-in-the-world-for-broadband.html",
+     "note": "Cable.co.uk 2024 broadband pricing (2023.9~11 수집), ISPreview 보도 인용",
+     "verified": false
+    },
+    "petrol_1l": {
+     "value": 2011.22,
+     "as_of": "2026-05",
+     "source": "https://www.globalpetrolprices.com/South-Korea/gasoline_prices/",
+     "note": "11-May-2026 기준. 국가 메인 페이지엔 1,866.16(날짜 10.08.2026 표기 모호)도 표시",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 170.84,
+     "as_of": "2025-12",
+     "source": "https://www.globalpetrolprices.com/South-Korea/electricity_prices/",
+     "note": "가정용, 01.12.2025 기준 (전기 페이지엔 171.6도 표시)",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": 89900,
+     "as_of": "2026-02",
+     "source": "https://www.ikea.com/kr/en/p/billy-bookcase-white-00522047/",
+     "note": "정가 89,900원 (2026.2.5~3.3 패밀리 회원가 80,000원 표시 중 확인)",
+     "verified": false
+    }
+   },
+   "cities": {
+    "서울": {
+     "meal_cheap": {
+      "value": 8846,
+      "as_of": "2026-09",
+      "source": "https://www.fnnews.com/news/202610191207019169",
+      "note": "한국소비자원 참가격 서울 김치찌개백반 평균",
+      "verified": false
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "2024년 이후 현지통화 기준 신뢰 출처 미확인 (Price of Travel은 USD 범위만 확인)"
+     },
+     "taxi_base": {
+      "value": 4800,
+      "as_of": "2026-11",
+      "source": "https://news.seoul.go.kr/traffic/archives/1659",
+      "note": "중형택시 1.6km까지, 서울시 공식 안내",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 1550,
+      "as_of": "2025-06",
+      "source": "https://biz.sbs.co.kr/amp/article/20000243176",
+      "note": "지하철 성인 교통카드 기본요금, 2025.6.28 인상",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "중급 호텔 평균 1박 공신력 조사 미확인 (Price of Travel '3성급 US$51부터'는 최저가)"
+     },
+     "backpacker_daily_usd": {
+      "value": 51.24,
+      "as_of": "2025-06",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "2025 Asia Backpacker Index (KRW75,112). 서울 가이드 페이지엔 56.13 표기",
+      "verified": false
+     }
+    },
+    "부산": {
+     "meal_cheap": {
+      "value": null,
+      "note": "부산 참가격 저렴한 한 끼 수치 미확인"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "출처 미확인"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "2023.6 4,800원 인상 보도(2024년 이전 자료)만 확인, 2024년 이후 출처 미확인. 2026.6 업계 인상 요구 보도 있음"
+     },
+     "transit_single": {
+      "value": 1600,
+      "as_of": "2024-05",
+      "source": "https://www.khan.co.kr/article/202405020956001",
+      "note": "도시철도 1구간 성인 교통카드, 2024.5.3 인상",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "출처 미확인"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel 2025 Asia Backpacker Index에 해당 도시 수치 미확인 (priceoftravel.com 직접 접속 불가)"
+     }
+    },
+    "제주도": {
+     "meal_cheap": {
+      "value": null,
+      "note": "제주 김치찌개백반 등 참가격 수치 미확인"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "출처 미확인"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "요금계산 사이트에 4,500원 표기만 있음, 공식 출처 미확인"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "jeju.com 블로그에 간선·지선 교통카드 1,150원 표기, 공식·날짜 미확인"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "출처 미확인"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel 지수에 제주 없음"
+     }
+    }
+   }
+  },
+  "PH": {
+   "currency": "PHP",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "no official price list; only Foodpanda 'from ₱170-175' listings (size unspecified, undated) and blog estimates found"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "iphone_base": {
+     "value": 69990,
+     "as_of": "2026-09",
+     "source": "https://www.revu.com.ph/?p=54668",
+     "note": "iPhone 17 256GB. UNCERTAIN: secondary source (Revu table: ₱57,990 -> ₱69,990, reported Apple PH price hike Sep 2026); not verified on apple.com/ph",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "spotify_premium": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "petrol_1l": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "electricity_kwh": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    },
+    "ikea_billy": {
+     "value": null,
+     "note": "web search budget exhausted (shared 200-call limit) before this item could be searched; direct page fetch blocked in this session"
+    }
+   },
+   "cities": {
+    "마닐라": {
+     "meal_cheap": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "taxi_base": {
+      "value": 65,
+      "as_of": "2026-09",
+      "source": "https://www.sunstar.com.ph/manila/ltfrb-sets-new-puv-rates-effective-sept-28",
+      "note": "LTFRB provisional regular-taxi flag-down P65 (from P50) effective 2026-09-28; LTFRB says not final. Metro Manila applicability inferred from national order report",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 20,
+      "as_of": "2025-04",
+      "source": "https://philstar.com/business/2025/02/18/2422395/lrt-1-set-increase-prices-effective-april",
+      "note": "LRT-1 single journey minimum fare (from 2025-04-02). Note: MRT-3/LRT-2 have 50% fare discount for all since 2026-03-23 (min ₱6/₱8)",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no authoritative mid-range hotel survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 25.06,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025 (only year stated; month unknown, as_of set to 2025-01). Seen via search snippet; site not fetchable in this session; PHP1,451/day. Manila city guide shows US$22.78",
+      "verified": false
+     }
+    },
+    "세부": {
+     "meal_cheap": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "taxi_base": {
+      "value": 65,
+      "as_of": "2026-09",
+      "source": "https://www.sunstar.com.ph/cebu/fare-hike-takes-effect-before-wage-increase",
+      "note": "LTFRB provisional regular-taxi flag-down P65 (from P50) effective 2026-09-28; not final",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 14,
+      "as_of": "2026-09",
+      "source": "https://philstarlife.com/news-and-views/486689-dotr-approves-puv-fare-hikes-effective-sept-28",
+      "note": "No metro/city bus standard in Cebu; traditional jeepney minimum fare (modern jeepney P17), effective 2026-09-28",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no authoritative mid-range hotel survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Cebu not included in Price of Travel Backpacker Index"
+     }
+    },
+    "보라카이 섬": {
+     "meal_cheap": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "not found in a dated local-currency source; priceoftravel city guide shows only USD ranges of unclear date and page could not be fetched"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "no metered taxis on Boracay (tricycle/e-trike only); no official fare found"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "no bus/metro system on Boracay"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "no authoritative mid-range hotel survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 39.87,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025 (only year stated; month unknown, as_of set to 2025-01). Seen via search snippet; site not fetchable in this session; PHP2,309/day. Boracay city guide shows US$37.44",
+      "verified": false
+     }
+    }
+   }
+  },
+  "TH": {
+   "currency": "THB",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": 120,
+     "as_of": "2024-01",
+     "source": "https://www.bangkokbiznews.com/lifestyle/food/1107061",
+     "note": "Starbucks Americano 120 baht after +5 baht hike on 2024-01-04 (also The Nation 2024-01-06); cup size not stated in source, assumed Tall (base size)",
+     "verified": false
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "iphone_base": {
+     "value": 29900,
+     "as_of": "2026-11",
+     "source": "https://www.apple.com/th-en/shop/buy-iphone/iphone-17",
+     "note": "iPhone 17 256GB (latest base model; iPhone 18 base slipped to 2027), Apple Thailand online store",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 349,
+     "as_of": "2026-11",
+     "source": "https://help.netflix.com/en/node/24926/th",
+     "note": "Netflix Help Center Thailand plans page (undated page; accessed 2026-11)",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 149,
+     "as_of": "2025-08",
+     "source": "https://techent.tv/2025/08/05/spotify-is-increasing-its-prices-heres-the-breakdown-for-malaysia-singapore-thailand-and-philippines",
+     "note": "Premium Individual raised from 129 to 149 THB/month (Aug 2025); spotify.com/th-th/premium also shows 149/month after intro promo",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "petrol_1l": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "electricity_kwh": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "ikea_billy": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen (IKEA Thailand exists; not checked)"
+    }
+   },
+   "cities": {
+    "방콕": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "backpacker_daily_usd": {
+      "value": 29.26,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025: THB1,002 = US$29.26/day; other PoT pages show 23.26 / 29.79 (seen via search snippets; page fetch blocked)",
+      "verified": false
+     }
+    },
+    "치앙마이": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Price of Travel Chiang Mai guide gives only USD ranges; no local-currency value published"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Price of Travel Chiang Mai guide gives only a USD range (pint $1.78-2.68); no local-currency value published"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "backpacker_daily_usd": {
+      "value": 22.17,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025: THB759 = US$22.17/day; PoT Chiang Mai guide / global list show US$22.57",
+      "verified": false
+     }
+    },
+    "푸껫 섬": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel figure for Phuket not visible in search results; page fetch blocked"
+     }
+    }
+   }
+  },
+  "TW": {
+   "currency": "TWD",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "Starbucks TW raised espresso drinks by NT$5 on 2025-02-12 (bnext.com.tw), but no source showing the Tall Americano price was found"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "No dated convenience-store/online price for 500/600ml PET found"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "WebFetch blocked in session and search budget exhausted; not found"
+    },
+    "iphone_base": {
+     "value": 29900,
+     "as_of": "2025-09",
+     "source": "https://www.inside.com.tw/article/39537-apple-iphone-17",
+     "note": "iPhone 17 256GB launch price per press (apple.com/tw unreachable); verify still latest base model",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 380,
+     "as_of": "2026-01",
+     "source": "https://www.onion-net.com.tw/news_detail/netflix-price",
+     "note": "Standard NT$380/mo per 2026 Taiwanese price guide (help.netflix.com unreachable); secondary source",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 168,
+     "as_of": "2026-11",
+     "source": "https://www.spotify.com/tw/intro/",
+     "note": "Premium Individual NT$168/mo after trial (official page via search index); raised from NT$149 in 2025-08",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "cable.co.uk unreachable (host blocked); search snippets did not show a 2024+ figure for this country"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "cable.co.uk unreachable (host blocked); search snippets did not show a 2024+ figure for this country"
+    },
+    "petrol_1l": {
+     "value": 31.3,
+     "as_of": "2026-07",
+     "source": "https://www.globalpetrolprices.com/Taiwan/",
+     "note": "GPP gasoline (dated 06.07.2026 on country page); CPC 92 octane NT$31.2 in 2026-09 per Taipei Times",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 3.23,
+     "as_of": "2025-12",
+     "source": "https://www.globalpetrolprices.com/Taiwan/electricity_prices/",
+     "note": "GPP household rate dated 01.12.2025 (3.234 TWD/kWh)",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": 2290,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com.tw/en/catalog/products/00522047",
+     "note": "BILLY white 80x28x202, art. 005.220.47; price seen via search snippet of ikea.com.tw, not page fetch",
+     "verified": false
+    }
+   },
+   "cities": {
+    "타이베이": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Price of Travel Taipei guide gives only USD ranges (budget lunch US$1.87-4.67), page ~2025-01; no local-currency single figure"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Price of Travel Taipei guide gives only USD range (0.5L US$1.71-4.67); no local-currency figure"
+     },
+     "taxi_base": {
+      "value": 85,
+      "as_of": "2026-01",
+      "source": "https://wantrich.chinatimes.com/news/20260110900091-420501",
+      "note": "Greater Taipei: NT$85 for first 1.25km (since 2023-04). Proposal to raise to NT$110 under review 2026-09, outcome unconfirmed",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 20,
+      "as_of": "2026-11",
+      "source": "https://english.metro.taipei/cp.aspx?n=BECC2E7AC426F659&s=0EE224E8BA770C16",
+      "note": "Taipei Metro single-journey ticket NT$20-65; minimum fare",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "No reliable survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": 36.7,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Asia Backpacker Index 2025 (TWD1,206.60/day); USD recalculated daily",
+      "verified": false
+     }
+    },
+    "가오슝": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Not covered by Price of Travel; no reliable source found"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Not covered by Price of Travel; no reliable source found"
+     },
+     "taxi_base": {
+      "value": 85,
+      "as_of": "2025-01",
+      "source": "https://www.ctee.com.tw/news/20250121701560-431401",
+      "note": "NT$85 for first 1.25km; drivers petitioned for increase in 2025, no approval found",
+      "verified": false
+     },
+     "transit_single": {
+      "value": null,
+      "note": "KRTC MRT starting fare commonly cited as NT$20 but no 2024+ dated source confirmed before search budget ran out"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "No reliable survey found"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Kaohsiung not in Price of Travel Backpacker Index"
+     }
+    }
+   }
+  },
+  "US": {
+   "currency": "USD",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "No official US national price (market-by-market pricing) and no dated reputable city report found; only low-authority menu-aggregator estimates ($3.75-$4.84), not recorded."
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "Walmart sells 16.9oz (500ml) Coke only in multipacks; listings conflict (6-pk $4.27 rollback / $7.98, 24-pk $32.99) and snapshot dates unknown. No single-bottle price seen."
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "Walmart Great Value 16.9oz water only in 24/40-packs ($3.68 / $5.47, ~$0.15/bottle), snapshot dates unknown; no single-bottle retail price seen."
+    },
+    "iphone_base": {
+     "value": 799,
+     "as_of": "2025-09",
+     "source": "https://www.phonearena.com/news/its-official-iphone-17-prices-are-here-and-the-base-model-just-became-the-best-deal_id173911",
+     "note": "iPhone 17 256GB US launch price (Apple store not reachable from research environment; press reports of Apple announcement).",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 19.99,
+     "as_of": "2026-04",
+     "source": "https://www.iclarified.com/100357/netflix-raises-us-prices-premium-now-2699-standard-1999",
+     "note": "Standard (no ads) after 2026 US price increase from $17.99; Standard with ads $8.99. Official Netflix page not reachable.",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 12.99,
+     "as_of": "2026-02",
+     "source": "https://www.macrumors.com/2026/01/15/spotify-increasing-subscription-prices/",
+     "note": "Premium Individual, raised from $11.99 effective Feb 2026 billing. Official Spotify page not reachable.",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "Latest Cable.co.uk mobile data study found is the 2023 edition (US $6.00/GB, collected Jul-Sep 2023), which predates 2024-01."
+    },
+    "broadband_month_usd": {
+     "value": 65.0,
+     "as_of": "2024-05",
+     "source": "https://bestbroadbanddeals.co.uk/broadband/pricing/worldwide-comparison/",
+     "note": "Cable.co.uk/BestBroadbandDeals Global broadband pricing league table 2024 (published May 2024; packages collected Sep-Nov 2023). US ranked 155th.",
+     "verified": false
+    },
+    "petrol_1l": {
+     "value": 1.17,
+     "as_of": "2026-09",
+     "source": "https://www.globalpetrolprices.com/USA/gasoline_prices/",
+     "note": "GlobalPetrolPrices, 07-Sep-2026, national average (EIA-based).",
+     "verified": false
+    },
+    "electricity_kwh": {
+     "value": 0.201,
+     "as_of": "2025-09",
+     "source": "https://www.globalpetrolprices.com/USA/electricity_prices/",
+     "note": "GlobalPetrolPrices residential price, data collected Sep 2025. A Mar-2026 table showing 0.203 appeared on a city page but could not be confirmed.",
+     "verified": false
+    },
+    "ikea_billy": {
+     "value": 79.0,
+     "as_of": "2026-11",
+     "source": "https://www.ikea.com/us/en/p/billy-bookcase-white-20522046/",
+     "note": "BILLY bookcase white 31 1/2x11x79 1/2\" (80x28x202cm), IKEA US site via search index snapshot (page not directly fetchable; snapshot date not shown).",
+     "verified": false
+    }
+   },
+   "cities": {
+    "뉴욕": {
+     "meal_cheap": {
+      "value": 16,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/new-york-city-price-guide",
+      "note": "Midpoint of Price of Travel 'budget dinner' range $12-20.",
+      "verified": false
+     },
+     "beer_restaurant": {
+      "value": 7.5,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/new-york-city-price-guide",
+      "note": "Midpoint of pint (~473ml) range $6-9.",
+      "verified": false
+     },
+     "taxi_base": {
+      "value": 3.0,
+      "as_of": "2026-11",
+      "source": "https://www.nyc.gov/site/tlc/passengers/taxi-fare.page",
+      "note": "NYC TLC yellow cab initial charge; plus $1 improvement surcharge and $2.50 congestion surcharge in Manhattan south of 96th St.",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 3.0,
+      "as_of": "2026-01",
+      "source": "https://www.mta.info/fares-tolls/2025-changes",
+      "note": "MTA subway/local bus base fare (OMNY) from 2026-01-04; paper Single Ride ticket $3.50.",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": 333.71,
+      "as_of": "2026-01",
+      "source": "https://www.costar.com/products/benchmark/resources/press-releases/us-hotels-report-first-full-year-occupancy-revpar",
+      "note": "CoStar/STR full-year 2025 ADR, all hotel classes (not mid-scale specific).",
+      "verified": false
+     },
+     "backpacker_daily_usd": {
+      "value": 136.7,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/north-america-backpacker-index",
+      "note": "Price of Travel North America Backpacker Index 2025.",
+      "verified": false
+     }
+    },
+    "로스앤젤레스": {
+     "meal_cheap": {
+      "value": 15,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/los-angeles-price-guide",
+      "note": "Midpoint of 'budget dinner' range $12-18.",
+      "verified": false
+     },
+     "beer_restaurant": {
+      "value": 7.5,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/los-angeles-price-guide",
+      "note": "Midpoint of pint range $6-9.",
+      "verified": false
+     },
+     "taxi_base": {
+      "value": 3.1,
+      "as_of": "2026-11",
+      "source": "https://ladot.lacity.gov/sites/default/files/documents/taxicab-rates-2023.pdf",
+      "note": "Flag drop for first 1/9 mile per LADOT 2023 rate sheet (still current); $3.10 figure confirmed via taxi company/secondary sources, not read directly from the PDF. +$4 LAX surcharge.",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 1.75,
+      "as_of": "2026-11",
+      "source": "https://www.metro.net/riding/fares/",
+      "note": "LA Metro base fare incl. 2 hours of free transfers; unchanged since 2014 (page undated).",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "No published full-year 2025 Los Angeles ADR found in CoStar/Visit LA results."
+     },
+     "backpacker_daily_usd": {
+      "value": 108.7,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/north-america-backpacker-index",
+      "note": "Price of Travel North America Backpacker Index 2025.",
+      "verified": false
+     }
+    },
+    "샌프란시스코": {
+     "meal_cheap": {
+      "value": 16.5,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/san-francisco-price-guide",
+      "note": "Midpoint of 'budget dinner' range $13-20.",
+      "verified": false
+     },
+     "beer_restaurant": {
+      "value": 7.5,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/san-francisco-price-guide",
+      "note": "Midpoint of pint range $6-9.",
+      "verified": false
+     },
+     "taxi_base": {
+      "value": 4.15,
+      "as_of": "2026-01",
+      "source": "https://www.sfmta.com/media/45041/download",
+      "note": "SFMTA taxi rate card: first 1/5 mile (flag) $4.15, $0.65 per additional 1/5 mile; unchanged on Jan-2026 card. SFO pickup fee $6 extra.",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 2.85,
+      "as_of": "2025-07",
+      "source": "https://www.sfmta.com/getting-around/muni/fares",
+      "note": "Muni adult fare on Clipper/MuniMobile from 2025-07-01; cash $3.00. A further fare change effective 2026-09-01 was referenced but not verified.",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": 225.82,
+      "as_of": "2026-01",
+      "source": "https://www.costar.com/products/benchmark/resources/press-releases/us-hotels-report-first-full-year-occupancy-revpar",
+      "note": "CoStar/STR full-year 2025 ADR, all hotel classes (not mid-scale specific).",
+      "verified": false
+     },
+     "backpacker_daily_usd": {
+      "value": 120.44,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/north-america-backpacker-index",
+      "note": "Price of Travel North America Backpacker Index 2025.",
+      "verified": false
+     }
+    },
+    "라스베이거스": {
+     "meal_cheap": {
+      "value": 16,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/las-vegas-price-guide",
+      "note": "Midpoint of 'budget dinner' range $12-20.",
+      "verified": false
+     },
+     "beer_restaurant": {
+      "value": 7,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/las-vegas-price-guide",
+      "note": "Midpoint of pint range $5-9.",
+      "verified": false
+     },
+     "taxi_base": {
+      "value": 5.25,
+      "as_of": "2026-11",
+      "source": "https://www.lasvegashowto.com/taxi-fare",
+      "note": "Initial meter activation per third-party 2026 fare guide (Nevada Taxicab Authority tariff not reachable); +$2.40 airport surcharge. Some guides still say $3.50.",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 2.0,
+      "as_of": "2026-06",
+      "source": "https://www.masstransitmag.com/management/news/55376860/nv-rtc-looking-at-bus-paratransit-fare-hikes-to-address-118m-shortfall",
+      "note": "RTC residential-route single ride; Strip routes (Deuce/SDX) single ride $4, 2-hour pass $6. Proposed increase to $3 not before Jan 2027.",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": 199.79,
+      "as_of": "2026-01",
+      "source": "https://www.costar.com/products/benchmark/resources/press-releases/us-hotels-report-first-full-year-occupancy-revpar",
+      "note": "CoStar/STR full-year 2025 ADR, all hotel classes (not mid-scale specific).",
+      "verified": false
+     },
+     "backpacker_daily_usd": {
+      "value": 119.75,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/north-america-backpacker-index",
+      "note": "Price of Travel North America Backpacker Index 2025.",
+      "verified": false
+     }
+    },
+    "하와이 호놀룰루": {
+     "meal_cheap": {
+      "value": 15.5,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/honolulu-price-guide",
+      "note": "Midpoint of 'budget dinner' range $12-19.",
+      "verified": false
+     },
+     "beer_restaurant": {
+      "value": 7,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/honolulu-price-guide",
+      "note": "Midpoint of pint range $5-9.",
+      "verified": false
+     },
+     "taxi_base": {
+      "value": 4.8,
+      "as_of": "2026-11",
+      "source": "https://www.charleystaxi.com/meter-rates",
+      "note": "Charley's Taxi current meter rate, flag drop first 1/10 mile (company page, effective date not stated). City rule max since 2023 was $4.38 per first 1/8 mile.",
+      "verified": false
+     },
+     "transit_single": {
+      "value": 3.0,
+      "as_of": "2026-07",
+      "source": "https://www.thebus.org/Fare202607/FareTran_TheBusFares.asp",
+      "note": "TheBus/Skyline adult HOLO 2-Hour Pass (single ride); cash $3.25.",
+      "verified": false
+     },
+     "hotel_mid": {
+      "value": 280.22,
+      "as_of": "2025-05",
+      "source": "https://www.hawaiitourismauthority.org/media/14573/oahu-fact-sheet-with-may-2025-data.pdf",
+      "note": "HTA Oahu hotel ADR year-to-date Jan-May 2025, all classes (island-level, not Honolulu-only or mid-scale specific).",
+      "verified": false
+     },
+     "backpacker_daily_usd": {
+      "value": 119.99,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/north-america-backpacker-index",
+      "note": "Price of Travel North America Backpacker Index 2025.",
+      "verified": false
+     }
+    }
+   }
+  },
+  "VN": {
+   "currency": "VND",
+   "national": {
+    "starbucks_americano_tall": {
+     "value": null,
+     "note": "Searched; no dated official/press Tall Americano price found (only an undated Hoi An menu listing 85,000/97,000/109,000 with unlabeled sizes)"
+    },
+    "coke_500ml": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "water_500ml": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "iphone_base": {
+     "value": 24990000,
+     "as_of": "2025-09",
+     "source": "https://viettelstore.vn/tin-tuc/iphone-17-256gb",
+     "note": "iPhone 17 256GB (latest base model; iPhone 18 base slipped to 2027). Price is Apple VN official launch price as cited by Viettel Store (updated 2025-09-30); apple.com/vn not seen directly",
+     "verified": false
+    },
+    "netflix_standard": {
+     "value": 231000,
+     "as_of": "2025-07",
+     "source": "https://dtinews.dantri.com.vn/culture-and-sport/netflix-and-other-online-services-raise-prices-in-vietnam-20250702110042169.htm",
+     "note": "Raised from 220,000 in July 2025 (tax adjustment); press report, Netflix help page not fetched",
+     "verified": false
+    },
+    "spotify_premium": {
+     "value": 65000,
+     "as_of": "2026-11",
+     "source": "https://www.spotify.com/vn/premium/",
+     "note": "Premium Individual monthly, official Spotify VN page (via search snippet)",
+     "verified": false
+    },
+    "mobile_data_1gb_usd": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "broadband_month_usd": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "petrol_1l": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "electricity_kwh": {
+     "value": null,
+     "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+    },
+    "ikea_billy": {
+     "value": null,
+     "note": "No IKEA store/official online shop in Vietnam"
+    }
+   },
+   "cities": {
+    "호치민": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "backpacker_daily_usd": {
+      "value": 20.37,
+      "as_of": "2025-01",
+      "source": "https://www.priceoftravel.com/asia-backpacker-index",
+      "note": "Price of Travel Asia Backpacker Index 2025: VND518,540 = US$20.37/day (seen via search snippet; page fetch blocked)",
+      "verified": false
+     }
+    },
+    "하노이": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Price of Travel 2025 snippets conflicting (US$20.37 vs US$21.63); could not open page to verify"
+     }
+    },
+    "다낭": {
+     "meal_cheap": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "beer_restaurant": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "taxi_base": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "transit_single": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "hotel_mid": {
+      "value": null,
+      "note": "Not found: web search budget exhausted / page fetch blocked (host not in network allowlist) before a verifiable 2024+ source was seen"
+     },
+     "backpacker_daily_usd": {
+      "value": null,
+      "note": "Da Nang not found in Price of Travel Backpacker Index results"
+     }
+    }
+   }
+  }
+ }
+}
