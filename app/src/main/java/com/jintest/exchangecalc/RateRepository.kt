@@ -13,19 +13,39 @@ import java.util.Locale
 import java.util.TimeZone
 
 /**
- * 특정 날짜의 USD 1달러 기준 환율표. 다른 통화끼리는 USD를 거쳐 교차 계산한다.
+ * 특정 날짜의 USD 1달러 기준 환율표 (통화 코드 → 환율). 다른 통화끼리는 USD를 거쳐 교차 계산한다.
  * date는 "yyyy-MM-dd".
  */
-data class Rates(val perUsd: Map<Currency, Double>, val date: String) {
+data class Rates(val perUsd: Map<String, Double>, val date: String) {
     fun convert(amount: Double, from: Currency, to: Currency): Double? {
-        val fromRate = perUsd[from] ?: return null
-        val toRate = perUsd[to] ?: return null
+        val fromRate = perUsd[from.code] ?: return null
+        val toRate = perUsd[to.code] ?: return null
         return amount / fromRate * toRate
     }
 }
 
+/**
+ * 카드·위젯에 보여줄 환율 한 줄: "unit 통화 = value 상대통화"와 전일·작년말 대비 증감.
+ * 값이 오르면 그 통화가 상대통화보다 강해진 것.
+ */
+data class Quote(val unit: Int, val value: Double, val decimals: Int, val prevDiff: Double?, val yearDiff: Double?)
+
 /** 최신 환율과 비교용 환율(전일, 작년 말). 비교용은 못 받아오면 null. */
-data class RateSet(val latest: Rates, val prevDay: Rates?, val yearEnd: Rates?)
+data class RateSet(val latest: Rates, val prevDay: Rates?, val yearEnd: Rates?) {
+    fun quote(currency: Currency, against: Currency): Quote? {
+        val rate = latest.convert(1.0, currency, against) ?: return null
+        val unit = Formatter.quoteUnit(rate)
+        val prev = prevDay?.convert(1.0, currency, against)
+        val year = yearEnd?.convert(1.0, currency, against)
+        return Quote(
+            unit = unit,
+            value = rate * unit,
+            decimals = Formatter.rateDecimals(rate * unit),
+            prevDiff = prev?.let { (rate - it) * unit },
+            yearDiff = year?.let { (rate - it) * unit },
+        )
+    }
+}
 
 /**
  * 무료 환율 API(fawazahmed0/currency-api, API 키 불필요)에서 환율을 받는다.
@@ -45,10 +65,14 @@ class RateRepository(context: Context) {
         )
     }
 
+    /** 마지막으로 받은 지 3시간이 지났으면 true (위젯 자동 갱신 판단용). */
+    fun isStale(): Boolean =
+        System.currentTimeMillis() - prefs.getLong(KEY_FETCHED_AT, 0) > 3 * 60 * 60 * 1000L
+
     suspend fun fetch(): RateSet = withContext(Dispatchers.IO) {
         val latestJson = download("latest") ?: error("서버 응답 없음")
         val latest = parse(latestJson) ?: error("응답 형식 오류")
-        prefs.edit().putString(KEY_LATEST, latestJson).apply()
+        prefs.edit().putString(KEY_LATEST, latestJson).putLong(KEY_FETCHED_AT, System.currentTimeMillis()).apply()
 
         val day = dateFormat().parse(latest.date) ?: error("날짜 형식 오류")
         val prevDay = findDated(KEY_PREV, (1..4).map { shiftDays(day, -it) })
@@ -105,9 +129,9 @@ class RateRepository(context: Context) {
     private fun parse(json: String): Rates? = runCatching {
         val root = JSONObject(json)
         val table = root.getJSONObject("usd")
-        val perUsd = Currency.entries
-            .filter { table.has(it.code.lowercase(Locale.ROOT)) }
-            .associateWith { table.getDouble(it.code.lowercase(Locale.ROOT)) }
+        val perUsd = table.keys().asSequence()
+            .mapNotNull { key -> table.optDouble(key).takeIf { !it.isNaN() }?.let { key.uppercase(Locale.ROOT) to it } }
+            .toMap()
         Rates(perUsd, root.getString("date"))
     }.getOrNull()
 
@@ -123,5 +147,6 @@ class RateRepository(context: Context) {
         const val KEY_LATEST = "latest_json"
         const val KEY_PREV = "prev_day_json"
         const val KEY_YEAR_END = "year_end_json"
+        const val KEY_FETCHED_AT = "fetched_at"
     }
 }

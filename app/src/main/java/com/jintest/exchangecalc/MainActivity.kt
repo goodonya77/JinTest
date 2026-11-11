@@ -1,25 +1,37 @@
 package com.jintest.exchangecalc
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Card
@@ -38,23 +50,34 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import kotlin.math.abs
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,56 +91,203 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * 세로 화면: 위 입력 칸 + 아래 2열 카드 (함께 스크롤)
+ * 가로 화면/태블릿: 왼쪽에 입력 칸 고정 + 오른쪽 3열 이상 카드
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExchangeScreen(vm: MainViewModel = viewModel()) {
     val state by vm.state.collectAsStateWithLifecycle()
-    val amount = state.amountText.toDoubleOrNull() ?: 0.0
+    val config = LocalConfiguration.current
+    val wide = config.orientation == Configuration.ORIENTATION_LANDSCAPE || config.screenWidthDp >= 600
+    val gridState = rememberLazyGridState()
+    val reorder = remember(gridState) { ReorderState(gridState) }
+    var showAdd by rememberSaveable { mutableStateOf(false) }
+    val dragging = reorder.draggingKey != null
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("환율계산기") },
-                actions = {
-                    if (state.loading) {
-                        CircularProgressIndicator(Modifier.padding(12.dp).size(24.dp), strokeWidth = 2.dp)
-                    } else {
-                        IconButton(onClick = vm::refresh) {
-                            Icon(Icons.Filled.Refresh, contentDescription = "새로고침")
-                        }
-                    }
-                },
-            )
-        },
-    ) { padding ->
-        LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(padding),
-            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
-            item {
-                BaseHeader(
-                    state = state,
-                    onAmountChange = vm::onAmountChange,
-                    onAmountFocused = vm::onAmountFocused,
-                    onResetAuto = vm::resetToAutoBase,
+            if (!wide) {
+                TopAppBar(
+                    title = { Text("환율계산기") },
+                    actions = { RefreshButton(state.loading, vm::refresh) },
                 )
             }
-            items(Currency.entries.filter { it != state.base }, key = { it.code }) { c ->
-                CurrencyRow(c, state.base, amount, state.rates, onClick = { vm.selectBase(c) })
+        },
+    ) { padding ->
+        if (wide) {
+            Row(Modifier.fillMaxSize().padding(padding).padding(horizontal = 12.dp)) {
+                Column(Modifier.width(300.dp).fillMaxHeight().verticalScroll(rememberScrollState())) {
+                    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Text("환율계산기", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
+                        RefreshButton(state.loading, vm::refresh)
+                    }
+                    BaseHeader(state, vm)
+                    Hint(dragging)
+                    Footer(state)
+                }
+                Spacer(Modifier.width(12.dp))
+                CardGrid(
+                    state, vm, reorder,
+                    columns = GridCells.Adaptive(minSize = 160.dp),
+                    onAdd = { showAdd = true },
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                )
             }
-            item { Footer(state) }
+        } else {
+            CardGrid(
+                state, vm, reorder,
+                columns = GridCells.Fixed(2),
+                onAdd = { showAdd = true },
+                header = {
+                    Column(Modifier.padding(top = 4.dp)) {
+                        BaseHeader(state, vm)
+                        Hint(dragging)
+                    }
+                },
+                footer = { Footer(state) },
+                modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 12.dp),
+            )
         }
+    }
+
+    if (showAdd) {
+        AddCurrencySheet(
+            options = state.addable,
+            onPick = { vm.addCurrency(it); showAdd = false },
+            onDismiss = { showAdd = false },
+        )
     }
 }
 
 @Composable
-private fun BaseHeader(
+private fun RefreshButton(loading: Boolean, onClick: () -> Unit) {
+    if (loading) {
+        CircularProgressIndicator(Modifier.padding(12.dp).size(24.dp), strokeWidth = 2.dp)
+    } else {
+        IconButton(onClick = onClick) { Icon(Icons.Filled.Refresh, contentDescription = "새로고침") }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun CardGrid(
     state: UiState,
-    onAmountChange: (String) -> Unit,
-    onAmountFocused: () -> Unit,
-    onResetAuto: () -> Unit,
+    vm: MainViewModel,
+    reorder: ReorderState,
+    columns: GridCells,
+    onAdd: () -> Unit,
+    modifier: Modifier = Modifier,
+    header: (@Composable () -> Unit)? = null,
+    footer: (@Composable () -> Unit)? = null,
 ) {
+    val haptic = LocalHapticFeedback.current
+    val trashHeightPx = with(LocalDensity.current) { (TrashHeight + 24.dp).toPx() }
+    val amount = state.amountText.toDoubleOrNull() ?: 0.0
+
+    Box(modifier.onSizeChanged { reorder.trashTop = it.height - trashHeightPx }) {
+        LazyVerticalGrid(
+            columns = columns,
+            state = reorder.gridState,
+            // 끄는 중에는 목록이 같이 스크롤되지 않게
+            userScrollEnabled = reorder.draggingKey == null,
+            modifier = Modifier
+                .fillMaxSize()
+                .pointerInput(reorder) {
+                    detectDragGesturesAfterLongPress(
+                        onDragStart = {
+                            if (reorder.start(it)) haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        },
+                        onDrag = { change, dragAmount ->
+                            if (reorder.draggingKey != null) change.consume()
+                            reorder.drag(dragAmount, vm::moveCurrency)
+                        },
+                        onDragEnd = {
+                            if (reorder.draggingKey != null) {
+                                reorder.end(vm::removeCurrency)
+                                vm.onReorderFinished()
+                            }
+                        },
+                        onDragCancel = { reorder.cancel() },
+                    )
+                },
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            if (header != null) item(key = "header", span = { GridItemSpan(maxLineSpan) }) { header() }
+
+            items(state.cards, key = { cardKey(it, state) }) { c ->
+                val key = cardKey(c, state)
+                val isHome = c == state.home
+                val lifted = reorder.draggingKey == key
+                val placement = if (lifted) {
+                    Modifier.zIndex(1f).graphicsLayer {
+                        val t = reorder.translation(key)
+                        translationX = t.x
+                        translationY = t.y
+                        scaleX = 1.05f
+                        scaleY = 1.05f
+                        rotationZ = 2f
+                    }
+                } else {
+                    Modifier.animateItem()
+                }
+                CurrencyCard(
+                    currency = c,
+                    isHome = isHome,
+                    // 거주국 카드는 거주국 통화 자신과 비교할 수 없으니 지금 기준 통화와 비교
+                    against = if (isHome) state.base else state.home,
+                    converted = state.rates?.latest?.convert(amount, state.base, c),
+                    quote = state.rates?.quote(c, if (isHome) state.base else state.home),
+                    lifted = lifted,
+                    modifier = placement
+                        .clip(CardDefaults.shape)
+                        // 길게 누르기는 그리드의 끌기 동작이 처리하므로 여기서는 아무것도 안 함 (클릭만 막음)
+                        .combinedClickable(onClick = { vm.selectBase(c) }, onLongClick = {}),
+                )
+            }
+
+            item(key = "add") { AddCard(onClick = onAdd, modifier = Modifier.animateItem()) }
+
+            if (footer != null) item(key = "footer", span = { GridItemSpan(maxLineSpan) }) { footer() }
+        }
+
+        if (reorder.draggingKey != null) {
+            TrashZone(active = reorder.overTrash, modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 12.dp))
+        }
+    }
+}
+
+private fun cardKey(c: Currency, state: UiState) =
+    if (c == state.home) "home:${c.code}" else ReorderState.MOVABLE + c.code
+
+private val TrashHeight = 60.dp
+
+@Composable
+private fun TrashZone(active: Boolean, modifier: Modifier = Modifier) {
+    val red = Color(0xFFD32F2F)
+    Box(
+        modifier
+            .fillMaxWidth()
+            .padding(horizontal = 4.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(if (active) red.copy(alpha = 0.85f) else red.copy(alpha = 0.12f))
+            .border(2.dp, red, RoundedCornerShape(14.dp))
+            .padding(vertical = 18.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            if (active) "🗑 놓으면 삭제돼요" else "🗑 여기로 끌어 놓으면 목록에서 삭제",
+            color = if (active) Color.White else red,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+@Composable
+private fun BaseHeader(state: UiState, vm: MainViewModel) {
     val base = state.base
     val focusManager = LocalFocusManager.current
     Card(
@@ -126,8 +296,7 @@ private fun BaseHeader(
     ) {
         Column(Modifier.padding(horizontal = 14.dp, vertical = 12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("${base.flag}  ${base.code} · ${base.koreanName}", fontWeight = FontWeight.Bold)
-                Spacer(Modifier.weight(1f))
+                Text("${base.flag}  ${base.code} · ${base.koreanName}", fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
                 Text(
                     if (state.baseChosenManually) "직접 선택"
                     else "자동: ${state.country.code.ifEmpty { "?" }} (${state.country.source.label})",
@@ -136,7 +305,7 @@ private fun BaseHeader(
             }
             OutlinedTextField(
                 value = state.amountText,
-                onValueChange = onAmountChange,
+                onValueChange = vm::onAmountChange,
                 singleLine = true,
                 placeholder = { Text("0") },
                 textStyle = MaterialTheme.typography.headlineSmall,
@@ -146,101 +315,49 @@ private fun BaseHeader(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp)
-                    .onFocusChanged { if (it.isFocused) onAmountFocused() },
+                    .onFocusChanged { if (it.isFocused) vm.onAmountFocused() },
             )
             if (state.baseChosenManually) {
-                TextButton(onClick = onResetAuto) { Text("거주 국가 통화로 되돌리기") }
-            }
-        }
-    }
-    Text(
-        "다른 통화를 누르면 그 통화가 기준이 돼요 · ▲빨강: 기준통화 대비 강세, ▼파랑: 약세",
-        style = MaterialTheme.typography.labelSmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier.padding(top = 4.dp, start = 4.dp),
-    )
-}
-
-/**
- * 한 통화의 줄 (2줄 구성)
- *  1줄: 국기 · 코드 · 이름 ........ 환산 금액
- *  2줄: 1 USD = 1,380.50 ..... 전일 ▲5.20  작년말 ▼12.30
- * 환율은 "이 통화 1단위가 기준통화로 얼마인지". 오르면 이 통화가 강해진 것(빨강), 내리면 약해진 것(파랑).
- */
-@Composable
-private fun CurrencyRow(currency: Currency, base: Currency, amount: Double, rates: RateSet?, onClick: () -> Unit) {
-    val converted = rates?.latest?.convert(amount, base, currency)
-    val rate = rates?.latest?.convert(1.0, currency, base)
-    val unit = rate?.let { Formatter.quoteUnit(it) } ?: 1
-    val prev = rates?.prevDay?.convert(1.0, currency, base)
-    val yearEnd = rates?.yearEnd?.convert(1.0, currency, base)
-    val muted = MaterialTheme.colorScheme.onSurfaceVariant
-
-    Card(Modifier.fillMaxWidth().clickable(onClick = onClick)) {
-        Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(currency.flag, fontSize = 20.sp)
-                Spacer(Modifier.width(8.dp))
-                Text(currency.code, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.width(6.dp))
-                Text(
-                    currency.koreanName,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = muted,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.weight(1f),
-                )
-                Text(
-                    converted?.let { Formatter.display(it, currency) } ?: "—",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-            Row(Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    rate?.let { "$unit ${currency.code} = ${Formatter.rate(it * unit)}" } ?: "",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = muted,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.weight(1f),
-                )
-                ChangeText("전일", rate, prev, unit)
-                Spacer(Modifier.width(10.dp))
-                ChangeText("작년말", rate, yearEnd, unit)
+                TextButton(onClick = vm::resetToAutoBase) { Text("↺ 거주 국가 통화로 되돌리기") }
             }
         }
     }
 }
 
 @Composable
-private fun ChangeText(label: String, now: Double?, before: Double?, unit: Int) {
-    val dark = isSystemInDarkTheme()
-    val red = if (dark) Color(0xFFEF5350) else Color(0xFFD32F2F)
-    val blue = if (dark) Color(0xFF64B5F6) else Color(0xFF1565C0)
-    val muted = MaterialTheme.colorScheme.onSurfaceVariant
-
-    val diff = if (now != null && before != null) (now - before) * unit else null
-    val (value, color) = when {
-        diff == null -> "—" to muted
-        abs(diff) < 0.005 -> "0.00" to muted
-        diff > 0 -> "▲${Formatter.rate(diff)}" to red
-        else -> "▼${Formatter.rate(-diff)}" to blue
+private fun Hint(dragging: Boolean) {
+    if (dragging) {
+        Text(
+            "✋ 끌어서 원하는 위치에 놓으세요 · 거주국 통화는 맨 앞 고정",
+            color = MaterialTheme.colorScheme.onPrimary,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(MaterialTheme.colorScheme.primary)
+                .padding(horizontal = 10.dp, vertical = 8.dp),
+        )
+    } else {
+        Text(
+            buildAnnotatedString {
+                append("카드를 누르면 기준 통화 변경 · ")
+                withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append("길게 누르면 순서 변경") }
+                append(" · ")
+                withStyle(SpanStyle(color = trendColor(Trend.UP))) { append("▲강세 ") }
+                withStyle(SpanStyle(color = trendColor(Trend.DOWN))) { append("▼약세") }
+                append(" (거주국 통화 대비)")
+            },
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp),
+        )
     }
-    Text(
-        buildAnnotatedString {
-            withStyle(SpanStyle(color = muted)) { append("$label ") }
-            withStyle(SpanStyle(color = color, fontWeight = FontWeight.SemiBold)) { append(value) }
-        },
-        style = MaterialTheme.typography.labelMedium,
-        maxLines = 1,
-    )
 }
 
 @Composable
 private fun Footer(state: UiState) {
-    Column(Modifier.padding(top = 8.dp, start = 4.dp)) {
+    Column(Modifier.padding(top = 8.dp, start = 4.dp, bottom = 16.dp)) {
         state.error?.let {
             Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
         }

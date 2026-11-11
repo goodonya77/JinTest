@@ -33,6 +33,6 @@ jobs:
         run: |
           for tag in latest 2025-12-31; do
             curl -fsS "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@$tag/v1/currencies/usd.min.json" \
-              | jq -c '{date, usd: (.usd | {krw, jpy, vnd, eur, idr, inr, cny})}'
+              | jq -c '{date, usd: (.usd | {krw, jpy, vnd, eur, idr, inr, cny, aud, thb})}'
           done
           curl -fsS https://api.country.is/ | jq -c '{country}'

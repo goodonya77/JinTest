@@ -70,16 +70,16 @@ object CountryDetector {
     private fun String?.toCountry(): String? =
         this?.trim()?.uppercase(Locale.ROOT)?.takeIf { it.length == 2 }
 
-    /** 국가 코드에 맞는 기준 통화. 목록에 없는 나라는 USD. */
-    fun currencyForCountry(country: String): Currency = when (country) {
-        "KR" -> Currency.KRW
-        "US" -> Currency.USD
-        "JP" -> Currency.JPY
-        "VN" -> Currency.VND
-        "ID" -> Currency.IDR
-        "IN" -> Currency.INR
-        "CN" -> Currency.CNY
-        in EURO_COUNTRIES -> Currency.EUR
-        else -> Currency.USD
+    /** 국가 코드에 맞는 통화. 유로존은 EUR, 목록에 없는 나라는 USD. */
+    fun currencyForCountry(country: String): Currency =
+        if (country in EURO_COUNTRIES) Currencies.EUR
+        else Currencies.ALL.firstOrNull { it.country == country } ?: Currencies.USD
+
+    /** 네트워크 없이 바로 거주국 통화를 정한다 (위젯용). 앱이 마지막으로 확인한 국가를 우선 쓴다. */
+    fun homeCurrencyQuick(context: Context): Currency {
+        val country = Settings(context).lastCountry
+            ?: fromNetwork(context)?.code
+            ?: fromSimOrLocale(context).code
+        return currencyForCountry(country)
     }
 }
