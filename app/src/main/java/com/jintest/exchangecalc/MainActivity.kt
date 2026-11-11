@@ -1,6 +1,5 @@
 package com.jintest.exchangecalc
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,11 +25,9 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Card
@@ -75,6 +71,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -92,15 +89,26 @@ class MainActivity : ComponentActivity() {
 }
 
 /**
- * 세로 화면: 위 입력 칸 + 아래 2열 카드 (함께 스크롤)
- * 가로 화면/태블릿: 왼쪽에 입력 칸 고정 + 오른쪽 3열 이상 카드
+ * 화면 크기에 따라 배치를 바꾼다 (돌리거나 폴드를 접고 펼 때마다 다시 계산).
+ *  - 폰 세로 / 폴드 커버: 위 입력 칸 + 2열
+ *  - 폰 가로: 한 줄 입력 바 + 4열
+ *  - 폴드 펼친 세로 (~720dp): 한 줄 입력 바 + 3열
+ *  - 폴드 펼친 가로 (~980dp): 한 줄 입력 바 + 5열 × 2줄 (한 화면에 전부)
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExchangeScreen(vm: MainViewModel = viewModel()) {
     val state by vm.state.collectAsStateWithLifecycle()
     val config = LocalConfiguration.current
-    val wide = config.orientation == Configuration.ORIENTATION_LANDSCAPE || config.screenWidthDp >= 600
+    val w = config.screenWidthDp
+    val h = config.screenHeightDp
+    val landscape = w > h
+    val columns = if (landscape) (w / 190).coerceIn(3, 6) else (w / 230).coerceIn(2, 4)
+    val wideHeader = w >= 600
+    val layout = CardLayout(
+        minHeight = if (wideHeader && landscape) 200.dp else CardMinHeight,
+        amountSize = if (wideHeader) 26.sp else 22.sp,
+    )
     val gridState = rememberLazyGridState()
     val reorder = remember(gridState) { ReorderState(gridState) }
     var showAdd by rememberSaveable { mutableStateOf(false) }
@@ -108,48 +116,26 @@ fun ExchangeScreen(vm: MainViewModel = viewModel()) {
 
     Scaffold(
         topBar = {
-            if (!wide) {
-                TopAppBar(
-                    title = { Text("환율계산기") },
-                    actions = { RefreshButton(state.loading, vm::refresh) },
-                )
-            }
+            TopAppBar(
+                title = { Text("환율계산기") },
+                actions = { RefreshButton(state.loading, vm::refresh) },
+            )
         },
     ) { padding ->
-        if (wide) {
-            Row(Modifier.fillMaxSize().padding(padding).padding(horizontal = 12.dp)) {
-                Column(Modifier.width(300.dp).fillMaxHeight().verticalScroll(rememberScrollState())) {
-                    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text("환율계산기", style = MaterialTheme.typography.titleLarge, modifier = Modifier.weight(1f))
-                        RefreshButton(state.loading, vm::refresh)
-                    }
-                    BaseHeader(state, vm)
+        CardGrid(
+            state, vm, reorder,
+            columns = GridCells.Fixed(columns),
+            layout = layout,
+            onAdd = { showAdd = true },
+            header = {
+                Column(Modifier.padding(top = 4.dp)) {
+                    if (wideHeader) BaseHeaderRow(state, vm) else BaseHeader(state, vm)
                     Hint(dragging)
-                    Footer(state)
                 }
-                Spacer(Modifier.width(12.dp))
-                CardGrid(
-                    state, vm, reorder,
-                    columns = GridCells.Adaptive(minSize = 160.dp),
-                    onAdd = { showAdd = true },
-                    modifier = Modifier.weight(1f).fillMaxHeight(),
-                )
-            }
-        } else {
-            CardGrid(
-                state, vm, reorder,
-                columns = GridCells.Fixed(2),
-                onAdd = { showAdd = true },
-                header = {
-                    Column(Modifier.padding(top = 4.dp)) {
-                        BaseHeader(state, vm)
-                        Hint(dragging)
-                    }
-                },
-                footer = { Footer(state) },
-                modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 12.dp),
-            )
-        }
+            },
+            footer = { Footer(state) },
+            modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 14.dp),
+        )
     }
 
     if (showAdd) {
@@ -177,6 +163,7 @@ private fun CardGrid(
     vm: MainViewModel,
     reorder: ReorderState,
     columns: GridCells,
+    layout: CardLayout,
     onAdd: () -> Unit,
     modifier: Modifier = Modifier,
     header: (@Composable () -> Unit)? = null,
@@ -241,6 +228,7 @@ private fun CardGrid(
                     converted = state.rates?.latest?.convert(amount, state.base, c),
                     quote = state.rates?.quote(c, if (isHome) state.base else state.home),
                     lifted = lifted,
+                    layout = layout,
                     modifier = placement
                         .clip(CardDefaults.shape)
                         // 길게 누르기는 그리드의 끌기 동작이 처리하므로 여기서는 아무것도 안 함 (클릭만 막음)
@@ -248,7 +236,7 @@ private fun CardGrid(
                 )
             }
 
-            item(key = "add") { AddCard(onClick = onAdd, modifier = Modifier.animateItem()) }
+            item(key = "add") { AddCard(onClick = onAdd, minHeight = layout.minHeight, modifier = Modifier.animateItem()) }
 
             if (footer != null) item(key = "footer", span = { GridItemSpan(maxLineSpan) }) { footer() }
         }
@@ -319,6 +307,45 @@ private fun BaseHeader(state: UiState, vm: MainViewModel) {
             )
             if (state.baseChosenManually) {
                 TextButton(onClick = vm::resetToAutoBase) { Text("↺ 거주 국가 통화로 되돌리기") }
+            }
+        }
+    }
+}
+
+/** 펼친 화면용 한 줄 입력 바: 통화 · 금액 입력 · 자동 감지 표시 */
+@Composable
+private fun BaseHeaderRow(state: UiState, vm: MainViewModel) {
+    val base = state.base
+    val focusManager = LocalFocusManager.current
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Row(Modifier.padding(horizontal = 14.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column {
+                Text("${base.flag} ${base.code}", fontWeight = FontWeight.Bold)
+                Text(base.koreanName, style = MaterialTheme.typography.labelMedium)
+            }
+            Spacer(Modifier.width(14.dp))
+            OutlinedTextField(
+                value = state.amountText,
+                onValueChange = vm::onAmountChange,
+                singleLine = true,
+                placeholder = { Text("0") },
+                textStyle = MaterialTheme.typography.headlineSmall,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                suffix = { Text(base.code) },
+                modifier = Modifier.weight(1f).onFocusChanged { if (it.isFocused) vm.onAmountFocused() },
+            )
+            Spacer(Modifier.width(14.dp))
+            if (state.baseChosenManually) {
+                TextButton(onClick = vm::resetToAutoBase) { Text("↺ 거주국 통화로") }
+            } else {
+                Text(
+                    "자동: ${state.country.code.ifEmpty { "?" }} (${state.country.source.label})",
+                    style = MaterialTheme.typography.labelMedium,
+                )
             }
         }
     }

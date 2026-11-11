@@ -30,10 +30,15 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 val CardMinHeight = 160.dp
+
+/** 화면 크기에 따라 달라지는 카드 크기 */
+data class CardLayout(val minHeight: Dp = CardMinHeight, val amountSize: TextUnit = 22.sp)
 
 @Composable
 fun trendColor(trend: Trend): Color {
@@ -63,16 +68,17 @@ fun CurrencyCard(
     converted: Double?,
     quote: Quote?,
     lifted: Boolean,
+    layout: CardLayout = CardLayout(),
     modifier: Modifier = Modifier,
 ) {
     val muted = MaterialTheme.colorScheme.onSurfaceVariant
     Card(
-        modifier = modifier.fillMaxWidth().heightIn(min = CardMinHeight),
+        modifier = modifier.fillMaxWidth().heightIn(min = layout.minHeight),
         elevation = CardDefaults.cardElevation(defaultElevation = if (lifted) 12.dp else 0.dp),
         colors = if (lifted) CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
         else CardDefaults.cardColors(),
     ) {
-        Column(Modifier.padding(12.dp)) {
+        Column(Modifier.heightIn(min = layout.minHeight).padding(12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(currency.flag, fontSize = 26.sp)
                 Spacer(Modifier.width(8.dp))
@@ -101,10 +107,12 @@ fun CurrencyCard(
                     )
                 }
             }
+            // 카드가 커지면 남는 공간은 금액 위에 둔다 (금액·환율·증감은 아래쪽에 모음)
+            Spacer(Modifier.weight(1f))
             val amount = converted?.let { Formatter.display(it, currency) } ?: "—"
             Text(
                 amount,
-                fontSize = if (amount.length > 12) 17.sp else 22.sp,
+                fontSize = if (amount.length > 12) layout.amountSize * 0.78f else layout.amountSize,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 textAlign = TextAlign.End,
@@ -136,12 +144,12 @@ private fun ChangeRow(label: String, diff: Double?, decimals: Int) {
 
 /** 목록 맨 끝의 점선 ＋ 카드 */
 @Composable
-fun AddCard(onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun AddCard(onClick: () -> Unit, minHeight: Dp = CardMinHeight, modifier: Modifier = Modifier) {
     val color = MaterialTheme.colorScheme.primary
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(min = CardMinHeight)
+            .heightIn(min = minHeight)
             .clip(RoundedCornerShape(14.dp))
             .clickable(onClick = onClick)
             .drawBehind {
