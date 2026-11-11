@@ -16,8 +16,10 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data/generated"
 UA = {"User-Agent": "ExchangeCalc data updater (github.com/goodonya77/JinTest)"}
 
-WB_URL = ("https://api.worldbank.org/v2/country/all/indicator/PA.NUS.PPPC.RF"
-          "?format=json&per_page=1000&mrnev=1")  # 나라별 가장 최근의 값이 있는 해
+WB_API = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json&per_page=20000&date=2012:2025"
+WB_RATIO = "PA.NUS.PPPC.RF"  # PPP 환율 ÷ 시장 환율 (보관 처리되어 없을 수 있음)
+WB_PPP = "PA.NUS.PPP"        # PPP 환율 (현지 통화 / 국제 달러)
+WB_FX = "PA.NUS.FCRF"        # 시장 환율 (현지 통화 / 미국 달러)
 BIGMAC_URL = ("https://raw.githubusercontent.com/TheEconomist/big-mac-data/"
               "master/output-data/big-mac-full-index.csv")
 
@@ -32,23 +34,44 @@ def our_countries():
     return {c["iso3"]: c for k in regions["continents"] for r in k["regions"] for c in r["countries"]}
 
 
-def world_bank(countries):
-    body = json.loads(get(WB_URL))
+def wb_series(code, countries):
+    """나라별 {연도: 값}. 지표가 없으면 None."""
+    body = json.loads(get(WB_API.format(code)))
     if len(body) < 2 or body[1] is None:
-        raise SystemExit(f"세계은행 API 오류: {body}")
-    meta, rows = body
-    latest = {}
-    for row in rows:
+        print(f"세계은행 {code}: {body}")
+        return None
+    series = {}
+    for row in body[1]:
         iso3, value = row.get("countryiso3code"), row.get("value")
         if iso3 in countries and value is not None:
-            year = int(row["date"])
-            if iso3 not in latest or year > latest[iso3]["year"]:
-                latest[iso3] = {"value": round(value, 4), "year": year}
+            series.setdefault(iso3, {})[int(row["date"])] = value
+    return series
+
+
+def world_bank(countries):
+    """미국 = 1 기준 물가 수준. 비율 지표가 없으면 PPP 환율 ÷ 시장 환율로 직접 계산한다."""
+    latest = {}
+    ratio = wb_series(WB_RATIO, countries)
+    if ratio:
+        method = WB_RATIO
+        for iso3, years in ratio.items():
+            y = max(years)
+            latest[iso3] = {"value": round(years[y], 4), "year": y}
+    else:
+        method = f"{WB_PPP} ÷ {WB_FX}"
+        ppp, fx = wb_series(WB_PPP, countries), wb_series(WB_FX, countries)
+        if not ppp or not fx:
+            raise SystemExit("세계은행 PPP·환율 지표를 받지 못했어요")
+        for iso3 in ppp:
+            both = [y for y in ppp[iso3] if y in fx.get(iso3, {}) and fx[iso3][y]]
+            if both:
+                y = max(both)
+                latest[iso3] = {"value": round(ppp[iso3][y] / fx[iso3][y], 4), "year": y}
     return {
-        "source": "World Bank, Price level ratio of PPP conversion factor (GDP) to market exchange rate (PA.NUS.PPPC.RF)",
+        "source": f"World Bank World Development Indicators ({method})",
         "license": "CC BY 4.0",
-        "url": "https://data.worldbank.org/indicator/PA.NUS.PPPC.RF",
-        "note": "미국 = 1. 한국 대비로 보려면 나라 값 ÷ 한국 값 × 100",
+        "url": "https://data.worldbank.org/indicator/PA.NUS.PPP",
+        "note": "미국 = 1인 물가 수준. 한국 대비로 보려면 나라 값 ÷ 한국 값 × 100",
         "countries": dict(sorted(latest.items())),
     }
 
