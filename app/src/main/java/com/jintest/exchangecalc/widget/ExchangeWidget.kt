@@ -53,7 +53,7 @@ private fun loadData(context: Context): WidgetData {
 }
 
 /**
- * 중간 위젯 (4×2): 거주국 통화 기준 환율 4개와 전일 대비 증감.
+ * 중간 위젯 (4×2): 거주국 통화 기준 환율 4개와 전일·작년말 대비 증감.
  * 누르면 앱이 열리고, ⟳를 누르면 바로 새 환율을 받는다.
  */
 class ExchangeWidget : GlanceAppWidget() {
@@ -100,7 +100,7 @@ private fun WidgetContent(data: WidgetData) {
                 modifier = GlanceModifier.defaultWeight(),
             )
             Text(
-                (data.date?.substring(5)?.replace("-", "/")?.let { "$it · " } ?: "") + "전일 대비",
+                (data.date?.substring(5)?.replace("-", "/")?.let { "$it · " } ?: "") + "전일 · 작년말",
                 style = TextStyle(fontSize = 11.sp, color = muted),
             )
             Text(
@@ -127,21 +127,28 @@ private fun WidgetContent(data: WidgetData) {
                     style = TextStyle(fontSize = 15.sp, fontWeight = FontWeight.Bold, color = text, textAlign = TextAlign.End),
                     modifier = GlanceModifier.defaultWeight(),
                 )
-                val (change, trend) = Formatter.change(quote?.prevDiff, quote?.decimals ?: 2)
-                Text(
-                    change,
-                    style = TextStyle(
-                        fontSize = 12.sp,
-                        color = when (trend) {
-                            Trend.UP -> Red
-                            Trend.DOWN -> Blue
-                            else -> muted
-                        },
-                        textAlign = TextAlign.End,
-                    ),
-                    modifier = GlanceModifier.width(68.dp),
-                )
+                ChangeText(quote?.prevDiff, quote?.decimals ?: 2, muted)
+                ChangeText(quote?.yearDiff, quote?.decimals ?: 2, muted)
             }
         }
     }
+}
+
+/** 증감 한 칸 (▲빨강 / ▼파랑) */
+@Composable
+private fun ChangeText(diff: Double?, decimals: Int, muted: androidx.glance.unit.ColorProvider) {
+    val (change, trend) = Formatter.change(diff, decimals)
+    Text(
+        change,
+        style = TextStyle(
+            fontSize = 11.sp,
+            color = when (trend) {
+                Trend.UP -> Red
+                Trend.DOWN -> Blue
+                else -> muted
+            },
+            textAlign = TextAlign.End,
+        ),
+        modifier = GlanceModifier.width(58.dp),
+    )
 }

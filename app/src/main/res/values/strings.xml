@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">환율계산기</string>
-    <string name="widget_description">거주국 통화 기준 환율 4개와 전일 대비 증감</string>
+    <string name="widget_description">거주국 통화 기준 환율 4개와 전일·작년말 대비 증감</string>
 </resources>
