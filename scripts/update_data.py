@@ -20,6 +20,11 @@ WB_API = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json&per_
 WB_RATIO = "PA.NUS.PPPC.RF"  # PPP 환율 ÷ 시장 환율 (보관 처리되어 없을 수 있음)
 WB_PPP = "PA.NUS.PPP"        # PPP 환율 (현지 통화 / 국제 달러)
 WB_FX = "PA.NUS.FCRF"        # 시장 환율 (현지 통화 / 미국 달러)
+# 공식 환율이 실제와 크게 달라 물가 수준이 왜곡되는 나라 (앱에서는 "없음"으로 표시)
+WB_EXCLUDE = {
+    "IRN": "공식 환율과 시장 환율 차이가 매우 큼 (복수 환율)",
+    "BGR": "2026년 유로 전환으로 PPP와 환율의 통화 단위가 섞여 있음",
+}
 BIGMAC_URL = ("https://raw.githubusercontent.com/TheEconomist/big-mac-data/"
               "master/output-data/big-mac-full-index.csv")
 
@@ -72,7 +77,8 @@ def world_bank(countries):
         "license": "CC BY 4.0",
         "url": "https://data.worldbank.org/indicator/PA.NUS.PPP",
         "note": "미국 = 1인 물가 수준. 한국 대비로 보려면 나라 값 ÷ 한국 값 × 100",
-        "countries": dict(sorted(latest.items())),
+        "excluded": {k: v for k, v in WB_EXCLUDE.items() if k in countries},
+        "countries": dict(sorted((k, v) for k, v in latest.items() if k not in WB_EXCLUDE)),
     }
 
 
