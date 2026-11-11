@@ -1,0 +1,584 @@
+{
+ "source": "World Bank World Development Indicators (PA.NUS.PPP ÷ PA.NUS.FCRF)",
+ "license": "CC BY 4.0",
+ "url": "https://data.worldbank.org/indicator/PA.NUS.PPP",
+ "note": "미국 = 1인 물가 수준. 한국 대비로 보려면 나라 값 ÷ 한국 값 × 100",
+ "countries": {
+  "ALB": {
+   "value": 0.4606,
+   "year": 2025
+  },
+  "AND": {
+   "value": 0.6807,
+   "year": 2025
+  },
+  "ARE": {
+   "value": 0.6336,
+   "year": 2024
+  },
+  "ARG": {
+   "value": 0.4572,
+   "year": 2025
+  },
+  "ARM": {
+   "value": 0.3827,
+   "year": 2025
+  },
+  "AUS": {
+   "value": 0.9014,
+   "year": 2025
+  },
+  "AUT": {
+   "value": 0.8196,
+   "year": 2025
+  },
+  "AZE": {
+   "value": 0.2838,
+   "year": 2025
+  },
+  "BEL": {
+   "value": 0.8135,
+   "year": 2025
+  },
+  "BGD": {
+   "value": 0.2536,
+   "year": 2025
+  },
+  "BGR": {
+   "value": 0.2338,
+   "year": 2025
+  },
+  "BHR": {
+   "value": 0.431,
+   "year": 2025
+  },
+  "BHS": {
+   "value": 0.9563,
+   "year": 2024
+  },
+  "BIH": {
+   "value": 0.4019,
+   "year": 2025
+  },
+  "BLR": {
+   "value": 0.2961,
+   "year": 2025
+  },
+  "BLZ": {
+   "value": 0.5256,
+   "year": 2025
+  },
+  "BOL": {
+   "value": 0.3999,
+   "year": 2025
+  },
+  "BRA": {
+   "value": 0.4572,
+   "year": 2025
+  },
+  "BRB": {
+   "value": 1.0954,
+   "year": 2025
+  },
+  "BRN": {
+   "value": 0.3487,
+   "year": 2025
+  },
+  "BTN": {
+   "value": 0.2293,
+   "year": 2025
+  },
+  "BWA": {
+   "value": 0.3758,
+   "year": 2025
+  },
+  "CAN": {
+   "value": 0.8345,
+   "year": 2025
+  },
+  "CHE": {
+   "value": 1.1196,
+   "year": 2025
+  },
+  "CHL": {
+   "value": 0.4764,
+   "year": 2025
+  },
+  "CHN": {
+   "value": 0.4726,
+   "year": 2025
+  },
+  "CIV": {
+   "value": 0.3716,
+   "year": 2025
+  },
+  "CMR": {
+   "value": 0.3408,
+   "year": 2025
+  },
+  "COL": {
+   "value": 0.3782,
+   "year": 2025
+  },
+  "CRI": {
+   "value": 0.5906,
+   "year": 2025
+  },
+  "CYP": {
+   "value": 0.6471,
+   "year": 2025
+  },
+  "CZE": {
+   "value": 0.5938,
+   "year": 2025
+  },
+  "DEU": {
+   "value": 0.8023,
+   "year": 2025
+  },
+  "DNK": {
+   "value": 0.9249,
+   "year": 2025
+  },
+  "DOM": {
+   "value": 0.3851,
+   "year": 2025
+  },
+  "DZA": {
+   "value": 0.3256,
+   "year": 2025
+  },
+  "ECU": {
+   "value": 0.4252,
+   "year": 2025
+  },
+  "EGY": {
+   "value": 0.1541,
+   "year": 2025
+  },
+  "ESP": {
+   "value": 0.6452,
+   "year": 2025
+  },
+  "EST": {
+   "value": 0.6605,
+   "year": 2025
+  },
+  "ETH": {
+   "value": 0.3281,
+   "year": 2024
+  },
+  "FIN": {
+   "value": 0.8522,
+   "year": 2025
+  },
+  "FJI": {
+   "value": 0.4065,
+   "year": 2025
+  },
+  "FRA": {
+   "value": 0.7657,
+   "year": 2025
+  },
+  "FSM": {
+   "value": 0.9587,
+   "year": 2025
+  },
+  "GBR": {
+   "value": 0.8916,
+   "year": 2025
+  },
+  "GEO": {
+   "value": 0.3294,
+   "year": 2025
+  },
+  "GHA": {
+   "value": 0.3783,
+   "year": 2025
+  },
+  "GRC": {
+   "value": 0.5954,
+   "year": 2025
+  },
+  "GTM": {
+   "value": 0.4342,
+   "year": 2025
+  },
+  "GUY": {
+   "value": 0.3311,
+   "year": 2025
+  },
+  "HKG": {
+   "value": 0.7085,
+   "year": 2025
+  },
+  "HND": {
+   "value": 0.4571,
+   "year": 2025
+  },
+  "HRV": {
+   "value": 0.532,
+   "year": 2025
+  },
+  "HTI": {
+   "value": 0.8602,
+   "year": 2025
+  },
+  "HUN": {
+   "value": 0.5198,
+   "year": 2025
+  },
+  "IDN": {
+   "value": 0.2865,
+   "year": 2025
+  },
+  "IND": {
+   "value": 0.2305,
+   "year": 2025
+  },
+  "IRL": {
+   "value": 0.8485,
+   "year": 2025
+  },
+  "IRN": {
+   "value": 2.2448,
+   "year": 2023
+  },
+  "IRQ": {
+   "value": 0.3792,
+   "year": 2025
+  },
+  "ISL": {
+   "value": 1.1785,
+   "year": 2025
+  },
+  "ISR": {
+   "value": 1.0104,
+   "year": 2025
+  },
+  "ITA": {
+   "value": 0.6896,
+   "year": 2025
+  },
+  "JAM": {
+   "value": 0.6021,
+   "year": 2025
+  },
+  "JOR": {
+   "value": 0.4234,
+   "year": 2025
+  },
+  "JPN": {
+   "value": 0.6487,
+   "year": 2025
+  },
+  "KAZ": {
+   "value": 0.3317,
+   "year": 2025
+  },
+  "KEN": {
+   "value": 0.3368,
+   "year": 2025
+  },
+  "KGZ": {
+   "value": 0.3342,
+   "year": 2025
+  },
+  "KHM": {
+   "value": 0.3362,
+   "year": 2025
+  },
+  "KIR": {
+   "value": 0.65,
+   "year": 2025
+  },
+  "KOR": {
+   "value": 0.5739,
+   "year": 2025
+  },
+  "KWT": {
+   "value": 0.5722,
+   "year": 2025
+  },
+  "LAO": {
+   "value": 0.2239,
+   "year": 2025
+  },
+  "LBN": {
+   "value": 0.3754,
+   "year": 2024
+  },
+  "LKA": {
+   "value": 0.2932,
+   "year": 2025
+  },
+  "LTU": {
+   "value": 0.5799,
+   "year": 2025
+  },
+  "LUX": {
+   "value": 0.9407,
+   "year": 2025
+  },
+  "LVA": {
+   "value": 0.5703,
+   "year": 2025
+  },
+  "MAC": {
+   "value": 0.5539,
+   "year": 2025
+  },
+  "MAR": {
+   "value": 0.4205,
+   "year": 2025
+  },
+  "MDA": {
+   "value": 0.431,
+   "year": 2025
+  },
+  "MDG": {
+   "value": 0.3069,
+   "year": 2025
+  },
+  "MDV": {
+   "value": 0.5118,
+   "year": 2025
+  },
+  "MEX": {
+   "value": 0.5369,
+   "year": 2025
+  },
+  "MHL": {
+   "value": 0.947,
+   "year": 2025
+  },
+  "MKD": {
+   "value": 0.3742,
+   "year": 2025
+  },
+  "MLT": {
+   "value": 0.6634,
+   "year": 2025
+  },
+  "MMR": {
+   "value": 0.2566,
+   "year": 2020
+  },
+  "MNE": {
+   "value": 0.4173,
+   "year": 2025
+  },
+  "MNG": {
+   "value": 0.3418,
+   "year": 2025
+  },
+  "MUS": {
+   "value": 0.3859,
+   "year": 2025
+  },
+  "MYS": {
+   "value": 0.3163,
+   "year": 2025
+  },
+  "NAM": {
+   "value": 0.4068,
+   "year": 2025
+  },
+  "NGA": {
+   "value": 0.1284,
+   "year": 2025
+  },
+  "NIC": {
+   "value": 0.3418,
+   "year": 2025
+  },
+  "NLD": {
+   "value": 0.8438,
+   "year": 2025
+  },
+  "NOR": {
+   "value": 0.9092,
+   "year": 2025
+  },
+  "NPL": {
+   "value": 0.2437,
+   "year": 2025
+  },
+  "NZL": {
+   "value": 0.8563,
+   "year": 2025
+  },
+  "OMN": {
+   "value": 0.4716,
+   "year": 2025
+  },
+  "PAK": {
+   "value": 0.2413,
+   "year": 2025
+  },
+  "PAN": {
+   "value": 0.4508,
+   "year": 2025
+  },
+  "PER": {
+   "value": 0.5147,
+   "year": 2025
+  },
+  "PHL": {
+   "value": 0.3316,
+   "year": 2025
+  },
+  "PLW": {
+   "value": 0.8473,
+   "year": 2025
+  },
+  "PNG": {
+   "value": 0.579,
+   "year": 2025
+  },
+  "POL": {
+   "value": 0.5237,
+   "year": 2025
+  },
+  "PRT": {
+   "value": 0.6037,
+   "year": 2025
+  },
+  "PRY": {
+   "value": 0.3482,
+   "year": 2025
+  },
+  "QAT": {
+   "value": 0.5627,
+   "year": 2025
+  },
+  "ROU": {
+   "value": 0.4428,
+   "year": 2025
+  },
+  "RUS": {
+   "value": 0.354,
+   "year": 2025
+  },
+  "RWA": {
+   "value": 0.2698,
+   "year": 2025
+  },
+  "SAU": {
+   "value": 0.4681,
+   "year": 2025
+  },
+  "SEN": {
+   "value": 0.3578,
+   "year": 2025
+  },
+  "SGP": {
+   "value": 0.6049,
+   "year": 2025
+  },
+  "SLB": {
+   "value": 0.7484,
+   "year": 2025
+  },
+  "SLV": {
+   "value": 0.409,
+   "year": 2025
+  },
+  "SRB": {
+   "value": 0.4501,
+   "year": 2025
+  },
+  "SUR": {
+   "value": 0.3121,
+   "year": 2025
+  },
+  "SVK": {
+   "value": 0.5789,
+   "year": 2025
+  },
+  "SVN": {
+   "value": 0.6309,
+   "year": 2025
+  },
+  "SWE": {
+   "value": 0.8705,
+   "year": 2025
+  },
+  "SYC": {
+   "value": 0.5425,
+   "year": 2025
+  },
+  "THA": {
+   "value": 0.3069,
+   "year": 2025
+  },
+  "TJK": {
+   "value": 0.2764,
+   "year": 2025
+  },
+  "TLS": {
+   "value": 0.2788,
+   "year": 2025
+  },
+  "TON": {
+   "value": 0.75,
+   "year": 2025
+  },
+  "TTO": {
+   "value": 0.511,
+   "year": 2025
+  },
+  "TUN": {
+   "value": 0.3056,
+   "year": 2025
+  },
+  "TUR": {
+   "value": 0.4107,
+   "year": 2025
+  },
+  "TZA": {
+   "value": 0.2821,
+   "year": 2024
+  },
+  "UGA": {
+   "value": 0.3529,
+   "year": 2025
+  },
+  "UKR": {
+   "value": 0.3103,
+   "year": 2025
+  },
+  "URY": {
+   "value": 0.6581,
+   "year": 2025
+  },
+  "USA": {
+   "value": 1.0,
+   "year": 2025
+  },
+  "UZB": {
+   "value": 0.2918,
+   "year": 2025
+  },
+  "VNM": {
+   "value": 0.2878,
+   "year": 2024
+  },
+  "VUT": {
+   "value": 0.8925,
+   "year": 2025
+  },
+  "WSM": {
+   "value": 0.6284,
+   "year": 2025
+  },
+  "ZAF": {
+   "value": 0.4148,
+   "year": 2025
+  },
+  "ZMB": {
+   "value": 0.2992,
+   "year": 2025
+  }
+ }
+}
