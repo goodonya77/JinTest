@@ -20,6 +20,9 @@ WB_API = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json&per_
 WB_RATIO = "PA.NUS.PPPC.RF"  # PPP 환율 ÷ 시장 환율 (보관 처리되어 없을 수 있음)
 WB_PPP = "PA.NUS.PPP"        # PPP 환율 (현지 통화 / 국제 달러)
 WB_FX = "PA.NUS.FCRF"        # 시장 환율 (현지 통화 / 미국 달러)
+# 세계은행에 없는 나라(대만 등)는 IMF 값으로 채운다: 1인당 GDP(달러) ÷ 1인당 GDP(PPP) = 미국 대비 물가 수준
+IMF_API = "https://www.imf.org/external/datamapper/api/v1/{}"
+IMF_NOMINAL, IMF_PPP = "NGDPDPC", "PPPPC"
 # 공식 환율이 실제와 크게 달라 물가 수준이 왜곡되는 나라 (앱에서는 "없음"으로 표시)
 WB_EXCLUDE = {
     "IRN": "공식 환율과 시장 환율 차이가 매우 큼 (복수 환율)",
@@ -72,14 +75,40 @@ def world_bank(countries):
             if both:
                 y = max(both)
                 latest[iso3] = {"value": round(ppp[iso3][y] / fx[iso3][y], 4), "year": y}
+    imf_filled = imf_fill(countries, latest)
     return {
         "source": f"World Bank World Development Indicators ({method})",
+        "imf_filled": imf_filled,
         "license": "CC BY 4.0",
         "url": "https://data.worldbank.org/indicator/PA.NUS.PPP",
         "note": "미국 = 1인 물가 수준. 한국 대비로 보려면 나라 값 ÷ 한국 값 × 100",
         "excluded": {k: v for k, v in WB_EXCLUDE.items() if k in countries},
         "countries": dict(sorted((k, v) for k, v in latest.items() if k not in WB_EXCLUDE)),
     }
+
+
+def imf_fill(countries, latest):
+    """세계은행 값이 없는 나라를 IMF 세계경제전망 값(추정치 제외, 올해 이전 연도)으로 채운다."""
+    import datetime
+    this_year = datetime.date.today().year
+    try:
+        nominal = json.loads(get(IMF_API.format(IMF_NOMINAL)))["values"][IMF_NOMINAL]
+        ppp = json.loads(get(IMF_API.format(IMF_PPP)))["values"][IMF_PPP]
+    except Exception as e:  # IMF가 막혀도 세계은행 값은 그대로 저장
+        print("IMF 데이터 실패:", e)
+        return []
+    filled = []
+    for iso3 in countries:
+        if iso3 in latest or iso3 in WB_EXCLUDE:
+            continue
+        years = [int(y) for y in nominal.get(iso3, {}) if y in ppp.get(iso3, {}) and int(y) < this_year
+                 and nominal[iso3][y] and ppp[iso3][y]]
+        if years:
+            y = max(years)
+            latest[iso3] = {"value": round(nominal[iso3][str(y)] / ppp[iso3][str(y)], 4), "year": y, "source": "IMF"}
+            filled.append(iso3)
+    print("IMF로 채운 나라:", filled)
+    return filled
 
 
 def big_mac(text, countries):
